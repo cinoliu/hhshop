@@ -1,0 +1,46 @@
+{
+  "name": "vue-admin-front-end",
+  "description": "vue-admin",
+  "version": "0.0.1",
+  "author": "win5do <win5do@qq.com>",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --colors",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+  },
+  "dependencies": {
+    "animate.css": "^3.5.2",
+    "axios": "^0.16.1",
+    "element-ui": "^1.3.2",
+    "minireset.css": "^0.0.3",
+    "vue": "^2.3.3",
+    "vue-router": "^2.5.3",
+    "vueditor": "^0.2.4",
+    "vuex": "^2.3.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-latest": "^6.24.1",
+    "cross-env": "^5.0.0",
+    "css-loader": "^0.28.1",
+    "element-theme-default": "^1.3.2",
+    "expose-loader": "^0.7.3",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.11.1",
+    "glob": "^7.1.1",
+    "html-loader": "^0.4.5",
+    "html-webpack-plugin": "^2.28.0",
+    "node-sass": "^4.5.2",
+    "postcss-loader": "^2.0.5",
+    "pug": "^2.0.0-rc.1",
+    "pug-loader": "^2.3.0",
+    "sass-loader": "^6.0.5",
+    "style-loader": "^0.17.0",
+    "url-loader": "^0.5.8",
+    "vue-loader": "^12.0.4",
+    "vue-template-compiler": "^2.3.3",
+    "webpack": "^2.5.1",
+    "webpack-dev-server": "^2.4.5"
+  }
+}

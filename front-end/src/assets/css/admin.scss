@@ -1,0 +1,104 @@
+@import "common";
+
+#app {
+    width: 100%;
+    height: 100%;
+}
+
+// login
+
+.login {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: url("../imgs/login-bg.jpg") no-repeat center;
+    background-size: cover;
+    .login-form {
+        width: 400px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        .el-form-item__label {
+            color: #fff;
+        }
+    }
+}
+
+// header
+header {
+    width: 100%;
+    height: 60px;
+    background: #444;
+}
+
+.header-wrap {
+    height: 100%;
+    display: flex;
+    flex-flow: nowrap row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.header-links {
+    display: flex;
+    flex-flow: nowrap row;
+    justify-content: center;
+    align-items: center;
+    .btn {
+        flex-flow: nowrap row;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        height: 100%;
+        padding: 0 20px;
+        color: #fff;
+    }
+}
+
+// admin
+.admin {
+    height: 100%;
+    min-width: 1200px;
+    display: flex;
+    flex-flow: column nowrap;
+
+    .admin-main {
+        display: flex;
+        flex-flow: row nowrap;
+        flex: auto;
+
+        .admin-main-right {
+            width: 200px;
+            flex: none;
+
+            .top-menu {
+                background: #666;
+                border-radius: 0;
+                height: 100%;
+            }
+        }
+    }
+
+    .admin-main-left {
+        flex: auto;
+        padding: 20px;
+        overflow-y: auto;
+    }
+}
+
+.admin-list {
+    .btns {
+        margin: 20px 0;
+        text-align: center;
+    }
+    .el-table__empty-block {
+        height: auto;
+    }
+}
+
+.form-contain {
+    width: 50%;
+    margin: 0 auto;
+}

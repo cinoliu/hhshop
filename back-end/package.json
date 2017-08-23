@@ -1,0 +1,21 @@
+{
+  "name": "vue-admin-back-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node app"
+  },
+  "author": "5f",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "express-session": "^1.15.2",
+    "moment": "^2.18.1",
+    "multer": "^1.3.0",
+    "mysql": "^2.13.0"
+  },
+  "devDependencies": {}
+}
