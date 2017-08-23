@@ -1,8 +1,8 @@
 # node-admin #
-用到的技术栈
-数据库：mysql NavicatPremium
-后端：node express mysqljs(node数据库模块)
-前端: vue(mvvm框架) elment-ui(快速搭建前端页面) axios(ajax) webpack(构建工具)
+- 用到的技术栈
+- 数据库：mysql NavicatPremium
+- 后端：node express mysqljs(node数据库模块)
+- 前端: vue(mvvm框架) elment-ui(快速搭建前端页面) axios(ajax) webpack(构建工具)
 
 
 ## 前言 ##
