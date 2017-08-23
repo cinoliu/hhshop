@@ -26,7 +26,7 @@ router.post(api.userChangeRole, user.controlVisit, user.changeRole); // 更改�
 
 
 // members
-router.get(api.memberList, member.fetchAll);
+router.post(api.memberList, member.fetchAll);
 router.post(api.memberDetail, member.fetchById);
 router.post(api.memberAdd, member.addOne);
 router.post(api.memberDelete, member.deleteOne);
@@ -39,7 +39,7 @@ router.post(api.memberChangeRole,  member.changeRole); // 更改会员等级
 
 
 // goods
-router.get(api.goodsList, goods.fetchAll);
+router.post(api.goodsList, goods.fetchAll);
 
 router.post(api.goodsDetail, goods.fetchById);
 router.post(api.goodsAdd, goods.addOne);

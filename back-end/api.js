@@ -21,8 +21,7 @@ module.exports = {
     memberDelete: path + '/member/delete',
     memberAdd: path + '/member/add',
     memberDeleteMulti: path + '/member/delete-multi',
-   	
-	 memberChangeRole: path + '/member/change-role',
+    memberChangeRole: path + '/member/change-role',
 
 	
 

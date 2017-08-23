@@ -14,21 +14,15 @@
 		
 <el-form :inline="true"  class="demo-form-inline">
   <el-form-item >
-    <el-input v-model="select_word" placeholder="筛选手机号码"></el-input>
+    <el-input v-model="member_phone" placeholder="筛选手机号码"></el-input>
   </el-form-item>
     <el-button type="primary" @click="search">查询</el-button>
-  </el-form-item>
-		
-		
+  </el-form-item>	
 		<router-link to="/admin/member-form">
 		<el-button type="success">新增会员</el-button>
 	</router-link>
 </el-form>
-		
-
-
-	
-		
+			
         <el-table
             v-loading='load'
             ref="multipleTable"
@@ -45,9 +39,8 @@
                 prop="member_name"
                 label="会员名称">
             </el-table-column>
-
-			
-			    <el-table-column
+	
+	       <el-table-column
                 prop="member_phone"
                 label="手机号码">
             </el-table-column>
@@ -60,14 +53,8 @@
 			
 -->
 
-
-  
-
 	<el-table-column prop="membership_level" label="等级"  :formatter="formatLevel" sortable>
 			</el-table-column>
-
-
-
             <el-table-column sortable
                 width="160"
                 label="添加日期">
@@ -86,12 +73,12 @@
             </el-table-column>
 -->
 
-<el-table-column label="操作">
+<el-table-column label="操作" width="300">
 	<template scope="scope">
      <el-dropdown trigger="click" @command="changeRole">
                         <el-button size="small"
                                    @click='curRow = scope.row'>
-                            修改等级<i class="el-icon-caret-bottom el-icon--right"></i>
+                            变更等级<i class="el-icon-caret-bottom el-icon--right"></i>
                         </el-button>
                         <el-dropdown-menu slot="dropdown">
                             <el-dropdown-item v-for='membership_level in membership_levels'
@@ -116,6 +103,11 @@
 </el-table-column>
 
 </el-table>
+<div class="pagination">
+	
+	<el-pagination @current-change="handleCurrentChange" layout="prev, pager, next" :total="500">
+	</el-pagination>
+</div>
 
 </div>
 </template>
@@ -127,11 +119,8 @@
 			return {
 				tableData: [],
 
-				select_word: '',
-				is_search: false,
-
-
-
+				cur_page: 1,
+				member_phone: '',
 				multipleSelection: [],
 
 				membership_levels: [{
@@ -170,16 +159,40 @@
 				});
 			},
 
+			
+			
+			fetchList() {
+		
+			 this.load = true;
+				var reqParams ={
+
+					member_phone:this.member_phone,
+					cur_page :this.cur_page,
+				
+				};
+		
+            this.func.ajaxPost(this.api.memberList,reqParams,res => {
+                this.tableData = res.data.members;
+                this.load = false;
+            });
+				
+		
+			},	
+			
+			
+			
+			
 
 			//分页
 			handleCurrentChange(val) {
 				this.cur_page = val;
-				this.getData();
+				this.fetchList();
 			},
 
 			//搜索
 			search() {
-				this.is_search = true;
+			
+				this.fetchList();
 			},
 
 

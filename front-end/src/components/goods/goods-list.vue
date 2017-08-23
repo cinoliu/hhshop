@@ -15,7 +15,7 @@
 		
 <el-form :inline="true"  class="demo-form-inline">
   <el-form-item >
-    <el-input v-model="select_word" placeholder="筛选商品名称"></el-input>
+    <el-input v-model="name" placeholder="筛选商品名称"></el-input>
   </el-form-item>
     <el-button type="primary" @click="search">查询</el-button>
   </el-form-item>
@@ -28,16 +28,7 @@
 		
 	<el-button type="success">批量上架</el-button>
             <el-button type="danger" @click="deleteMulti">批量删除</el-button>
-	
-		
 </el-form>
-		
-		
-
-
- 
-
-		
 		
         <el-table
             v-loading='load'
@@ -89,6 +80,12 @@
 
         </el-table>
     
+<div class="pagination">
+	
+	<el-pagination @current-change="handleCurrentChange" layout="prev, pager, next" :total="500">
+	</el-pagination>
+</div>
+
     </div>
 </template>
 
@@ -98,8 +95,9 @@
         name: 'list',
         data() {
             return {
-                tableData: [],
-				select_word: '',
+               tableData: [],
+				cur_page: 1,
+				name: '',
 				is_search: false,
 
                 multipleSelection: [],
@@ -109,7 +107,36 @@
         },
 
         methods: {
-            // 删除
+          
+			fetchList() {
+		
+			 this.load = true;
+				var reqParams ={
+					name:this.name,
+					cur_page :this.cur_page,
+				
+				};
+		
+            this.func.ajaxPost(this.api.goodsList,reqParams,res => {
+                this.tableData = res.data.goods;
+                this.load = false;
+            });
+				
+		
+			},
+			
+		//分页
+			handleCurrentChange(val) {
+				this.cur_page = val;
+				this.fetchList();
+			},
+
+			//搜索
+			search() {
+			
+				this.fetchList();
+			},
+  // 删除
             handleDelete(row) {
                 this.func.ajaxPost(this.api.goodsDelete, {id: row.id}, res => {
                     if (res.data.code === 200) {
@@ -119,20 +146,6 @@
                     }
                 });
             },
-
-			
-			
-				//分页
-			handleCurrentChange(val) {
-				this.cur_page = val;
-				this.getData();
-			},
-
-			//搜索
-			search() {
-				this.is_search = true;
-
-			},
 
 
             // 修改
@@ -162,14 +175,11 @@
             }
         },
 
-        created () {
-            this.load = true;
-
-            this.func.ajaxGet(this.api.goodsList, res => {
-                this.tableData = res.data.goods;
-                this.load = false;
-            });
-        },
+		
+		created() {
+			this.fetchList();
+		},
+     
 
 
     }

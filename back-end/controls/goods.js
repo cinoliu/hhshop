@@ -20,11 +20,27 @@ function formatData(rows) {
 module.exports = {
     // 获取商品列表
     fetchAll (req, res) {
+		 let cur_page =req.body.cur_page;
+		 let name =req.body.name;
+		  let sql, arr ,endLimit ,startLimit;
 		
+		console.log(req.body.cur_page);
 		pool.getConnection(function (err, connection) {
-			var sql = 'select * from goods ';
-			connection.query(sql, function (err, rows) {
-	
+			
+			 endLimit = cur_page *10;
+			 startLimit =  endLimit -10;
+			if(name){
+				
+					 sql ='select * from goods where name =?   limit ?, ?';
+					 arr = [name,startLimit , endLimit];
+				    
+			}else{
+				
+				sql ='select * from goods  limit ?, ?';
+				   arr = [startLimit , endLimit];
+			}
+		
+			connection.query(sql,arr, function (err, rows) {
 
 			console.log(rows);
             rows = formatData(rows);
@@ -35,8 +51,7 @@ module.exports = {
     // 获取商品详情
     fetchById (req, res) {
         let id = req.body.id;
-
-		
+     
 		pool.getConnection(function (err, connection) {
 			var sql = 'select * from goods WHERE id = ' + connection.escape(id);
 			connection.query(sql, function (err, rows) {
@@ -54,12 +69,9 @@ module.exports = {
         let name = req.body.name;
         let price = req.body.price;
         let sql, arr;
-
 		
 	pool.getConnection(function (err, connection) {
 
-	
-			
         if (id ) {
             // 更新
             sql = 'UPDATE goods SET name=?, price=? WHERE id=?';
@@ -69,10 +81,8 @@ module.exports = {
             sql = 'INSERT INTO goods(name, price) VALUES(?,?)';
             arr = [name, price];
 			
-			
         }	
-			
-				connection.query(sql,arr, function (err, rows) {
+		connection.query(sql,arr, function (err, rows) {
 
 					res.json({
 						code: 200,
@@ -82,11 +92,6 @@ module.exports = {
 
 				})
 			})
-		
-		
-		
-	
-
     },
 
 

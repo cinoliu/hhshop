@@ -20,26 +20,44 @@ function formatData(rows) {
 
 
 module.exports = {
+		
 	// 获取商品列表
-	fetchAll(req, res) {
-
+	
+	   fetchAll (req, res) {
+		 let cur_page =req.body.cur_page;
+		 let member_phone =req.body.member_phone;
+		  let sql, arr ,endLimit ,startLimit;
+		
+		console.log(req.body.cur_page);
 		pool.getConnection(function (err, connection) {
-			var sql = 'select * from members ';
-			connection.query(sql, function (err, rows) {
+			
+			 endLimit = cur_page *10;
+			 startLimit =  endLimit -10;
+			if(member_phone){
+				
+					 sql ='select * from members where member_phone =?   limit ?, ?';
+					 arr = [member_phone,startLimit , endLimit];
+				    
+			}else{
+				
+				sql ='select * from members  limit ?, ?';
+				   arr = [startLimit , endLimit];
+			}
+		
+			connection.query(sql,arr, function (err, rows) {
 
-
-				console.log(rows);
-				rows = formatData(rows);
-				res.json({
-					code: 200,
-					msg: 'ok',
-					members: rows
-				});
-			});
-		})
-	},
-
-	// 获取商品详情
+			console.log(rows);
+            rows = formatData(rows);
+            res.json({code: 200, msg: 'ok', members: rows});
+        });
+    })},
+	
+	
+	
+	
+	
+	
+	// 获取会员详情
 	fetchById(req, res) {
 		let id = req.body.id;
 
