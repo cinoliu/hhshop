@@ -12,7 +12,7 @@
 		
 </div>	
 		
-		<div  style="margin-bottom:30px">	
+
 		
 <el-form :inline="true"  class="demo-form-inline">
   <el-form-item >
@@ -30,8 +30,7 @@
 </el-form>
 		
 
-</div>
-		
+
 		
 			
 		
