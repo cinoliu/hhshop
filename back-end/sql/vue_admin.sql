@@ -1,23 +1,8 @@
-/*
-Navicat MySQL Data Transfer
 
-Source Server         : wf
-Source Server Version : 50718
-Source Host           : 39.108.4.6:3306
-Source Database       : vue_admin
-
-Target Server Type    : MYSQL
-Target Server Version : 50718
-File Encoding         : 65001
-
-Date: 2017-05-14 23:29:49
-*/
 
 SET FOREIGN_KEY_CHECKS=0;
 
--- ----------------------------
--- Table structure for goods
--- ----------------------------
+
 DROP TABLE IF EXISTS `goods`;
 CREATE TABLE `goods` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
