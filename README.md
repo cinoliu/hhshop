@@ -3,7 +3,7 @@
 - 数据库：mysql + NavicatPremium
 - 后端：node + express + mysqljs(node数据库模块)
 - 前端: vue(mvvm框架) + elment-ui(快速搭建前端页面) + axios(ajax) + webpack(构建工具)
-
+- [微信小程序](https://github.com/cinoliu/LFT-) ： 目前开发此管理系统主要是为了之前的微信小程序提供接口
 
 ## 前言 ##
 后端负责提供接口，操作数据库提供前端所需的数据和状态。
