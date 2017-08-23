@@ -43,10 +43,10 @@
 			return {
 				form: {
 					member_name: '',
-					pasmember_phones: '',
+					member_phone: '',
 					remarks: '',
 					recommendation_code: '',
-					membership_level: 0,
+					membership_level: 1,
 				}
 			}
 		},
@@ -71,6 +71,23 @@
 			},
 
 		},
+
+
+		created() {
+			let id = this.$route.query.id;
+
+			if (id) {
+				this.isNew = 0;
+
+				this.func.ajaxPost(this.api.memberDetail, {
+					id
+				}, res => {
+					this.form = res.data.members;
+					this.form.id = res.data.members.id;
+				});
+			}
+		},
+
 
 	}
 

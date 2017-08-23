@@ -59,18 +59,17 @@
                     <el-icon name="time"></el-icon>
                     <span style="margin-left: 10px">{{ scope.row.create_time }}</span>
                 </template>
-            </el-table-column>
+</el-table-column>
 
-            <el-table-column
-                label="权限">
-                <template scope="scope">
+<el-table-column label="权限">
+	<template scope="scope">
                     {{ scope.row.role }}
                 </template>
-            </el-table-column>
+</el-table-column>
 
 
-            <el-table-column label="操作">
-                <template scope="scope">
+<el-table-column label="操作">
+	<template scope="scope">
 
                     <el-dropdown trigger="click" @command="changeRole">
                         <el-button size="small"
@@ -93,9 +92,9 @@
                     </el-button>
 
                 </template>
-            </el-table-column>
+</el-table-column>
 
-        </el-table>
+</el-table>
 <!--
 <div class="pagination">
 	
@@ -103,99 +102,122 @@
 	</el-pagination>
 </div>
 -->
-    </div>
+</div>
 
 </template>
 
 <script>
-
-    export default {
-        name: 'list',
-        data() {
-            return {
-                tableData: [],
+	export default {
+		name: 'list',
+		data() {
+			return {
+				tableData: [],
 				cur_page: 1,
-                multipleSelection: [],
+				multipleSelection: [],
+				select_word: '',
+				is_search: false,
 
-                roles: [
-                    {val: '1', txt: '普通用户'},
-                    {val: '10', txt: '管理员'},
-                    {val: '100', txt: '超级管理员'},
-                ],
 
-                curRow: null,
+				roles: [{
+						val: '1',
+						txt: '普通用户'
+					},
+					{
+						val: '10',
+						txt: '管理员'
+					},
+					{
+						val: '100',
+						txt: '超级管理员'
+					},
+				],
 
-                load: false, // loading
-            }
-        },
+				curRow: null,
 
-        methods: {
-            fetchList () {
-                this.load = true;
+				load: false, // loading
+			}
+		},
 
-                this.func.ajaxGet(this.api.userList, res => {
-                    this.tableData = res.data.users;
-                    this.load = false;
-                });
-            },
+		methods: {
+			fetchList() {
+				this.load = true;
 
-			
+				this.func.ajaxGet(this.api.userList, res => {
+					this.tableData = res.data.users;
+					this.load = false;
+				});
+			},
+
+
 			//分页
 			handleCurrentChange(val) {
 				this.cur_page = val;
-				this.fetchList();
+				this.getData();
 			},
-			
-            // 删除
-            handleDelete(row) {
-                this.func.ajaxPost(this.api.userDelete, {id: row.id}, res => {
-                    if (res.data.code === 200) {
-                        let index = this.tableData.indexOf(row);
-                        this.tableData.splice(index, 1);
-                        this.$message.success('删除成功');
-                    }
-                });
-            },
 
-            // 修改
-            changeRole (val) {
-                this.func.ajaxPost(this.api.userChangeRole, {change_role: val, id: this.curRow.id},
-                    res => {
-                        if (res.data.code === 200) {
-                            this.$message.success('成功');
-                            this.fetchList();
-                        }
-                    }
-                );
+			//搜索
+			search() {
+				this.is_search = true;
+			},
 
-            },
+			// 删除
+			handleDelete(row) {
+				this.func.ajaxPost(this.api.userDelete, {
+					id: row.id
+				}, res => {
+					if (res.data.code === 200) {
+						let index = this.tableData.indexOf(row);
+						this.tableData.splice(index, 1);
+						this.$message.success('删除成功');
+					}
+				});
+			},
 
-            deleteMulti () {
-                let multi = this.multipleSelection
-                let id = multi.map(el => {
-                    return el.id;
-                });
+			// 修改
+			changeRole(val) {
+				this.func.ajaxPost(this.api.userChangeRole, {
+						change_role: val,
+						id: this.curRow.id
+					},
+					res => {
+						if (res.data.code === 200) {
+							this.$message.success('成功');
+							this.fetchList();
+						}
+					}
+				);
 
-                this.func.ajaxPost(this.api.userDeleteMulti, {id}, res => {
-                    if (res.data.code === 200) {
-                        this.$message.success('删除成功');
-                        multi.forEach(el => {
-                            let i = this.tableData.indexOf(el);
-                            this.tableData.splice(i, 1);
-                        });
-                    }
-                });
-            },
+			},
 
-            handleSelectionChange(val) {
-                this.multipleSelection = val;
-            }
-        },
+			deleteMulti() {
+				let multi = this.multipleSelection
+				let id = multi.map(el => {
+					return el.id;
+				});
 
-        created () {
-            this.fetchList();
-        },
+				this.func.ajaxPost(this.api.userDeleteMulti, {
+					id
+				}, res => {
+					if (res.data.code === 200) {
+						this.$message.success('删除成功');
+						multi.forEach(el => {
+							let i = this.tableData.indexOf(el);
+							this.tableData.splice(i, 1);
+						});
+					}
+				});
+			},
+
+			handleSelectionChange(val) {
+				this.multipleSelection = val;
+			}
+		},
+
+		created() {
+			this.fetchList();
+		},
 
 
-    }
+	}
+
 </script>

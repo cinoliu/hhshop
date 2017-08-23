@@ -102,7 +102,10 @@
                         </el-dropdown-menu>
                     </el-dropdown>
 
-
+ <el-button
+                        size="small"
+                        @click="editMember(scope.row)">修改会员
+                    </el-button>
                     <el-button
                         size="small"
                         type="danger"
@@ -153,24 +156,19 @@
 
 		methods: {
 
-
-
 			//会员转换
 			formatLevel: function(row, column) {
 				return row.membership_level == 1 ? '普通会员' : row.membership_level == 10 ? '金牌会员' : row.membership_level == 100 ? 'VIP会员' : '未知';
 			},
 
-
 			//列表数据
 			fetchList() {
 				this.load = true;
-
 				this.func.ajaxGet(this.api.memberList, res => {
 					this.tableData = res.data.members;
 					this.load = false;
 				});
 			},
-
 
 
 			//分页
@@ -182,10 +180,19 @@
 			//搜索
 			search() {
 				this.is_search = true;
-
 			},
 
 
+			// 修改
+			editMember(row) {
+				console.log(row);
+				this.$router.push({
+					path: '/admin/member-form',
+					query: {
+						id: row.id
+					}
+				});
+			},
 
 
 

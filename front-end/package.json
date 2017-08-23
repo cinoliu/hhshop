@@ -1,8 +1,8 @@
 {
-  "name": "vue-admin-front-end",
+  "name": "front-end",
   "description": "vue-admin",
-  "version": "0.0.1",
-  "author": "win5do <win5do@qq.com>",
+  "version": "1.0.0",
+  "author": "cinoliu",
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --colors",

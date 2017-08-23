@@ -59,9 +59,10 @@ module.exports = {
 		})
 	},
 
-	// 添加|更新 商品
+	// 添加|更新 会员
 	addOne(req, res) {
 		let id = req.body.id;
+		console.log(id);
 
 		let member_name = req.body.member_name;
 		let member_phone = req.body.member_phone;
@@ -71,10 +72,6 @@ module.exports = {
 
 		let membership_level = req.body.membership_level;
 		let sql, arr;
-
-
-
-
 
 
 
