@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for webpack-hot-middleware/middleware.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../prettify.css">
+    <link rel="stylesheet" href="../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">webpack-hot-middleware/middleware.js</span></h1>
+    <h2>
+        Statements: <span class="metric">93.75% <small>(45 / 48)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">72.22% <small>(13 / 18)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">86.67% <small>(13 / 15)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">95.65% <small>(44 / 46)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">webpack-hot-middleware/</a> &#187; middleware.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">module.exports = webpackHotMiddleware;
+&nbsp;
+var helpers = require('./helpers');
+var pathMatch = helpers.pathMatch;
+&nbsp;
+function webpackHotMiddleware(compiler, opts) {
+  opts = opts || <span class="branch-1 cbranch-no" title="branch not covered" >{};</span>
+  opts.log = typeof opts.log == 'undefined' ? <span class="branch-0 cbranch-no" title="branch not covered" >console.log </span>: opts.log;
+  opts.path = opts.path || '/__webpack_hmr';
+  opts.heartbeat = opts.heartbeat || 10 * 1000;
+&nbsp;
+  var eventStream = createEventStream(opts.heartbeat);
+  compiler.plugin("compile", function() {
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (opts.log) opts.log("webpack building...");
+    eventStream.publish({action: "building"});
+  });
+  compiler.plugin("done", function(stats) {
+    stats = stats.toJson();
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (opts.log) {
+      opts.log("webpack built " + stats.hash + " in " + stats.time + "ms");
+    }
+    eventStream.publish({
+      action: "built",
+      time: stats.time,
+      hash: stats.hash,
+      warnings: stats.warnings || [],
+      errors: stats.errors || [],
+      modules: buildModuleMap(stats.modules)
+    });
+  });
+  var middleware = function(req, res, next) {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (!pathMatch(req.url, opts.path)) <span class="cstat-no" title="statement not covered" >return next();</span>
+    eventStream.handler(req, res);
+  };
+  middleware.publish = eventStream.publish;
+  return middleware;
+}
+&nbsp;
+function createEventStream(heartbeat) {
+  var clientId = 0;
+  var clients = {};
+  function everyClient(fn) {
+    Object.keys(clients).forEach(function(id) {
+      fn(clients[id]);
+    });
+  }
+  setInterval(function heartbeatTick() {
+    everyClient(function(client) {
+      client.write("data: \uD83D\uDC93\n\n");
+    });
+  }, heartbeat).unref();
+  return {
+    handler: function(req, res) {
+      req.socket.setKeepAlive(true);
+      res.writeHead(200, {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'text/event-stream;charset=utf-8',
+        'Transfer-Encoding': 'chunked',
+        'Cache-Control': 'no-cache, no-transform',
+        'Connection': 'keep-alive'
+      });
+      res.write('\n');
+      var id = clientId++;
+      clients[id] = res;
+      req.on("close", <span class="fstat-no" title="function not covered" >function(){</span>
+<span class="cstat-no" title="statement not covered" >        delete clients[id];</span>
+      });
+    },
+    publish: function(payload) {
+      everyClient(function(client) {
+          client.write("data: " + JSON.stringify(payload) + "\n\n");
+      });
+    }
+  };
+}
+&nbsp;
+function buildModuleMap(modules) {
+  var map = {};
+  modules.forEach(<span class="fstat-no" title="function not covered" >function(module) {</span>
+<span class="cstat-no" title="statement not covered" >    map[module.id] = module.name;</span>
+  });
+  return map;
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 28 2015 11:53:49 GMT+0100 (BST)</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

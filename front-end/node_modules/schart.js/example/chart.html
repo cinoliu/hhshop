@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>sChart.js 演示</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <style>
+        .main{
+            padding: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <canvas id="canvas1" width="500" height="400"></canvas>
+        <canvas id="canvas2" width="500" height="400"></canvas>
+        <div></div>
+        <canvas id="canvas3" width="500" height="400"></canvas>
+        <canvas id="canvas4" width="500" height="400"></canvas>
+    </div>
+    
+    <script src="../lib/sChart.min.js"></script>
+    <script>
+        var data1 = [
+            {name:'2012',value:1141},
+            {name:'2013',value:1499},
+            {name:'2014',value:2260},
+            {name:'2015',value:1170},
+            {name:'2016',value:970},
+            {name:'2017',value:1450}
+        ]
+        var data2 = [
+            {name:'短袖',value:1200},
+            {name:'休闲裤',value:1222},
+            {name:'连衣裙',value:1283},
+            {name:'外套',value:1314},
+            {name:'羽绒服',value:2314}
+        ]
+        new sChart('canvas1', 'bar', data1, {
+            title: '某商店近年营业总额',
+            bgColor: '#829dda',
+            titleColor: '#ffffff',
+            fillColor: '#72f6ff',
+            axisColor: '#eeeeee',
+            contentColor: '#bbbbbb'
+        });
+        new sChart('canvas2', 'line', data1, {
+            title: '某商店近年营业总额',
+            bgColor: '#829dba',
+            titleColor: '#ffffff',
+            fillColor: '#72f6ff',       
+            axisColor: '#eeeeee',
+            contentColor: '#bbbbbb'
+        });
+        new sChart('canvas3', 'pie', data2, {
+            title: '某商店各商品年度销量',
+            bgColor: '#829dca',
+            titleColor: '#ffffff',
+            legendColor: '#ffffff'
+        });
+        new sChart('canvas4', 'ring', data2, {
+            title: '某商店各商品年度销量',
+            bgColor: '#829daa',
+            titleColor: '#ffffff',
+            legendColor: '#ffffff'
+        });
+    </script>
+</body>
+</html>

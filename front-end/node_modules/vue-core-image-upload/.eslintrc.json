@@ -1,0 +1,32 @@
+{
+    "extends": [
+      "airbnb-base",
+      "vue"
+    ],
+    "env": {
+      "browser": 1
+    },
+    "plugins": [
+        "import",
+        "vue",
+        "html"
+    ],
+    "globals": {
+        "XMLHttpRequest": 1,
+        "FormData": 1,
+        "File": 1,
+        "Blob": 1
+    },
+    "rules": {
+        "func-names": 0,
+        "prefer-template": 0,
+        "dot-notation": 0,
+        "radix": 0,
+        "no-mixed-operators": 0,
+        "no-param-reassign": 0,
+        "no-console": 0,
+        "comma-dangle": 0,
+        "no-extra-semi": 0,
+        "semi": ["error", "always"]
+    }
+}
