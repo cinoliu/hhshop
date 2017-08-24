@@ -15,7 +15,8 @@
 <el-form :inline="true"  class="demo-form-inline">
   <el-form-item >
     <el-input v-model="member_phone" placeholder="筛选手机号码"></el-input>
-  </el-form-item>
+    </el-form-item>
+	    <el-form-item >
     <el-button type="primary" @click="search">查询</el-button>
   </el-form-item>	
 		<router-link to="/admin/member-form">
@@ -45,13 +46,11 @@
                 label="手机号码">
             </el-table-column>
 			
-<!--
 			   <el-table-column
                 prop="recommendation_code"
                 label="推荐码">
             </el-table-column>
 			
--->
 
 	<el-table-column prop="membership_level" label="等级"  :formatter="formatLevel" sortable>
 			</el-table-column>
@@ -65,13 +64,7 @@
 </el-table-column>
 
 
-<!--
-        
-   			<el-table-column
-                prop="remarks"
-                label="备注">
-            </el-table-column>
--->
+
 
 <el-table-column label="操作" width="300">
 	<template scope="scope">
@@ -151,16 +144,7 @@
 			},
 
 			//列表数据
-			fetchList() {
-				this.load = true;
-				this.func.ajaxGet(this.api.memberList, res => {
-					this.tableData = res.data.members;
-					this.load = false;
-				});
-			},
-
-			
-			
+				
 			fetchList() {
 		
 			 this.load = true;
@@ -172,7 +156,7 @@
 				};
 		
             this.func.ajaxPost(this.api.memberList,reqParams,res => {
-                this.tableData = res.data.members;
+                this.tableData = res.data.resultList;
                 this.load = false;
             });
 				
@@ -238,22 +222,7 @@
 
 			},
 
-			//            deleteMulti () {
-			//                let multi = this.multipleSelection
-			//                let id = multi.map(el => {
-			//                    return el.id;
-			//                });
-			//
-			//                this.func.ajaxPost(this.api.memberDeleteMulti, {id}, res => {
-			//                    if (res.data.code === 200) {
-			//                        this.$message.success('删除成功');
-			//                        multi.forEach(el => {
-			//                            let i = this.tableData.indexOf(el);
-			//                            this.tableData.splice(i, 1);
-			//                        });
-			//                    }
-			//                });
-			//            },
+	
 
 			handleSelectionChange(val) {
 				this.multipleSelection = val;

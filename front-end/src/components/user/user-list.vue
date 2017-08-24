@@ -15,18 +15,13 @@
 
 		
 <el-form :inline="true"  class="demo-form-inline">
-  <el-form-item >
-    <el-input v-model="select_word" placeholder="筛选手机号码"></el-input>
-  </el-form-item>
-    <el-button type="primary" @click="search">查询</el-button>
-  </el-form-item>
-		
+ 
 		
 		<router-link to="/admin/user-form">
-		<el-button type="success">新增会员</el-button>
+		<el-button type="success">新增用户</el-button>
 	</router-link>
 			
-			  <el-button type="danger" @click="deleteMulti">批量删除</el-button>
+<!--			  <el-button type="danger" @click="deleteMulti">批量删除</el-button>-->
 </el-form>
 		
         <el-table
@@ -89,13 +84,11 @@
 </el-table-column>
 
 </el-table>
-<!--
 <div class="pagination">
 	
 	<el-pagination @current-change="handleCurrentChange" layout="prev, pager, next" :total="500">
 	</el-pagination>
 </div>
--->
 </div>
 
 </template>
@@ -108,10 +101,7 @@
 				tableData: [],
 				cur_page: 1,
 				multipleSelection: [],
-				select_word: '',
-				is_search: false,
-
-
+				
 				roles: [{
 						val: '1',
 						txt: '普通用户'
@@ -133,25 +123,32 @@
 		},
 
 		methods: {
-			fetchList() {
-				this.load = true;
-
-				this.func.ajaxGet(this.api.userList, res => {
-					this.tableData = res.data.users;
-					this.load = false;
-				});
+		
+			
+			
+		fetchList() {
+		
+			 this.load = true;
+				var reqParams ={
+					
+					cur_page :this.cur_page,
+				
+				};
+		
+            this.func.ajaxPost(this.api.userList,reqParams,res => {
+                this.tableData = res.data.resultList;
+                this.load = false;
+            });
+				
+		
 			},
-
+			
+			
 
 			//分页
 			handleCurrentChange(val) {
 				this.cur_page = val;
-				this.getData();
-			},
-
-			//搜索
-			search() {
-				this.is_search = true;
+				this.fetchList();
 			},
 
 			// 删除
@@ -182,25 +179,25 @@
 				);
 
 			},
-
-			deleteMulti() {
-				let multi = this.multipleSelection
-				let id = multi.map(el => {
-					return el.id;
-				});
-
-				this.func.ajaxPost(this.api.userDeleteMulti, {
-					id
-				}, res => {
-					if (res.data.code === 200) {
-						this.$message.success('删除成功');
-						multi.forEach(el => {
-							let i = this.tableData.indexOf(el);
-							this.tableData.splice(i, 1);
-						});
-					}
-				});
-			},
+//
+//			deleteMulti() {
+//				let multi = this.multipleSelection
+//				let id = multi.map(el => {
+//					return el.id;
+//				});
+//
+//				this.func.ajaxPost(this.api.userDeleteMulti, {
+//					id
+//				}, res => {
+//					if (res.data.code === 200) {
+//						this.$message.success('删除成功');
+//						multi.forEach(el => {
+//							let i = this.tableData.indexOf(el);
+//							this.tableData.splice(i, 1);
+//						});
+//					}
+//				});
+//			},
 
 			handleSelectionChange(val) {
 				this.multipleSelection = val;

@@ -35,16 +35,28 @@ function formatData(rows) {
 module.exports = {
 
 	fetchAll(req, res) {
+		
+		 let cur_page =req.body.cur_page;
+		  let sql, arr ,endLimit ,startLimit;
+		
+		
 
 		pool.getConnection(function (err, connection) {
-			var sql = 'select * from user ';
-			connection.query(sql, function (err, rows) {
+				 endLimit = cur_page *10;
+			 startLimit =  endLimit -10;
+			
+			
+				sql ='select * from user  limit ?, ?';
+				   arr = [startLimit , endLimit];
+			
+			connection.query(sql,arr, function (err, rows) {
+
 
 				rows = formatData(rows);
 				res.json({
 					code: 200,
 					msg: 'ok',
-					users: rows
+					resultList: rows
 				});
 			});
 
@@ -187,14 +199,7 @@ module.exports = {
 				//
 
 
-				//1.微信活动配置
-				//
-				//
-				//
-				//2.微信H5页面配置
-				// 模块的主要功能为 减少以前开发模式的多余性，提高超市活动的开发效率 。按照以往的项目经历，超市需要推广活动就需要开发一次，
-				// 而此模块功能只需要简单的操作配置就可以生成一个活动的源码，大大减少了开发量，提高了代码的可复用性，
-				//
+			
 
 
 

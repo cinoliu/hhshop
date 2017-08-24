@@ -24,6 +24,14 @@ module.exports = {
     memberChangeRole: path + '/member/change-role',
 
 	
+	 // goodstype
+    goodstypeList: path + '/goodstype/list',
+    goodstypeDetail: path + '/goodstype/detail',
+   	goodstypeDelete: path + '/goodstype/delete',
+    goodstypeAdd: path + '/goodstype/add',
+    goodstypeDeleteMulti: path + '/goodstype/delete-multi',
+   
+	
 
 	
 	 // goods

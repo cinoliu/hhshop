@@ -2,11 +2,11 @@
     <el-form ref="form" :model="form" label-width="80px" class="form-contain">
 
         <el-form-item label="商品名称">
-            <el-input v-model="form.name"></el-input>
+            <el-input v-model="form.goods_name"></el-input>
         </el-form-item>
 
         <el-form-item label="商品价格">
-            <el-input placeholder="请输入内容" v-model="form.price" type='number'>
+            <el-input placeholder="请输入内容" v-model="form.goods_price" type='number'>
                 <template slot="append">元</template>
 </el-input>
 </el-form-item>
@@ -16,21 +16,46 @@
 	<el-input-number v-model="form.inventory" :min="0"></el-input-number>
 </el-form-item>
 
-<el-form-item label="商品上架">
-	<el-switch v-model="form.onsale"></el-switch>
+<!--
+  <el-form-item label="活动区域">
+    <el-select v-model="form.region" placeholder="请选择活动区域">
+      <el-option label="区域一" value="shanghai"></el-option>
+      <el-option label="区域二" value="beijing"></el-option>
+    </el-select>
+  </el-form-item>
+-->
+
+
+<el-form-item label="商品状态">
+	<el-radio-group v-model="form.onsale">
+		<el-radio :label="0">下架</el-radio>
+		<el-radio :label="1">上架</el-radio>
+
+	</el-radio-group>
+</el-form-item>
+
+
+<el-form-item label="商品详情">
+	<el-input type="textarea" :rows="3" placeholder="请输入内容" v-model="form.goods_details">
+	</el-input>
+
 </el-form-item>
 
 
 
- <el-form-item label="商品属性">
-    <el-checkbox-group v-model="form.type">
-      <el-checkbox label="推荐" name="type"></el-checkbox>
-      <el-checkbox label="优选" name="type"></el-checkbox>
-      <el-checkbox label="折扣" name="type"></el-checkbox>
-      <el-checkbox label="热门" name="type"></el-checkbox>
-    </el-checkbox-group>
-  </el-form-item>
+<el-form-item label="上传图片">
+<el-upload
+  action="https://jsonplaceholder.typicode.com/posts/"
+  list-type="picture-card"
+  :on-preview="handlePictureCardPreview"
+  :on-remove="handleRemove">
+  <i class="el-icon-plus"></i>
+</el-upload>
+<el-dialog v-model="dialogVisible" size="tiny">
+  <img width="100%" :src="dialogImageUrl" alt="">
+</el-dialog>
 
+</el-form-item>
 
 
 <el-form-item>
@@ -50,20 +75,22 @@
 				isNew: 1, // 是否是添加
 				form: {
 					id: undefined,
-					name: '',
-					onsale: 0,
+					goods_name: '',
+					goods_price: 0,
+					onsale: '',
 					inventory: 0,
-					price: 0,
-					category: [],
-					imgs: [],
-					type: [],
+					imgs: '',
+					goods_type: '',
 
-				}
+				},
+
+				 dialogImageUrl: '',
+				dialogVisible: false
 			}
 		},
 		methods: {
 			onSubmit() {
-				if (!this.form.name) {
+				if (!this.form.goods_name) {
 					this.$message.warning('请填写完整信息');
 					return;
 				}
@@ -80,7 +107,22 @@
 				this.$router.push('/admin/goods-list');
 			},
 
+
+
+		handleRemove(file, fileList) {
+        console.log(file, fileList);
+      },
+      handlePictureCardPreview(file) {
+        this.dialogImageUrl = file.url;
+		 this.form.imgs = file.url;
+//       this.dialogVisible = true;
+      }
+
+
 		},
+
+
+
 
 		created() {
 			let id = this.$route.query.id;
@@ -91,8 +133,8 @@
 				this.func.ajaxPost(this.api.goodsDetail, {
 					id
 				}, res => {
-					this.form = res.data.goods;
-					this.form.id = res.data.goods.id;
+					this.form = res.data.resultList;
+					this.form.id = res.data.resultList.id;
 				});
 			}
 		},

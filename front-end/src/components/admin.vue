@@ -30,13 +30,27 @@
 
 
 <el-submenu index="3">
+	<template slot="title">类型管理</template>
+	<router-link to="/admin/goodstype-list">
+		<el-menu-item index="3-1">类型列表</el-menu-item>
+	</router-link>
+
+	<router-link to="/admin/goodstype-form">
+		<el-menu-item index="3-2">新增类型</el-menu-item>
+	</router-link>
+</el-submenu>
+
+
+
+
+<el-submenu index="4">
 	<template slot="title">商品管理</template>
 	<router-link to="/admin/goods-list">
-		<el-menu-item index="3-1">商品列表</el-menu-item>
+		<el-menu-item index="4-1">商品列表</el-menu-item>
 	</router-link>
 
 	<router-link to="/admin/goods-form">
-		<el-menu-item index="3-2">新增商品</el-menu-item>
+		<el-menu-item index="4-2">新增商品</el-menu-item>
 	</router-link>
 </el-submenu>
 

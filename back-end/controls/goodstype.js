@@ -25,7 +25,7 @@ module.exports = {
 	
 	   fetchAll (req, res) {
 		 let cur_page =req.body.cur_page;
-		 let member_phone =req.body.member_phone;
+		 let goods_typename =req.body.goods_typename;
 		  let sql, arr ,endLimit ,startLimit;
 		
 		console.log(req.body.cur_page);
@@ -33,14 +33,14 @@ module.exports = {
 			
 			 endLimit = cur_page *10;
 			 startLimit =  endLimit -10;
-			if(member_phone){
+			if(goods_typename){
 				
-					 sql ='select * from members where member_phone =? ';
-					 arr = [member_phone];
+					 sql ='select * from goodstype where goods_typename =? ';
+					 arr = [goods_typename];
 				    
 			}else{
 				
-				sql ='select * from members  limit ?, ?';
+				sql ='select * from goodstype  limit ?, ?';
 				   arr = [startLimit , endLimit];
 			}
 		
@@ -57,13 +57,13 @@ module.exports = {
 	
 	
 	
-	// 获取会员详情
+	// 获取详情
 	fetchById(req, res) {
 		let id = req.body.id;
 
 
 		pool.getConnection(function (err, connection) {
-			var sql = 'select * from members WHERE id = ' + connection.escape(id);
+			var sql = 'select * from goodstype WHERE id = ' + connection.escape(id);
 			connection.query(sql, function (err, rows) {
 
 				rows = formatData(rows);
@@ -82,30 +82,23 @@ module.exports = {
 		let id = req.body.id;
 		console.log(id);
 
-		let member_name = req.body.member_name;
-		let member_phone = req.body.member_phone;
-
+		let goods_typename = req.body.goods_typename;
 		let remarks = req.body.remarks;
-		let recommendation_code = req.body.recommendation_code;
 
-		let membership_level = req.body.membership_level;
 		let sql, arr;
-
 
 
 		pool.getConnection(function (err, connection) {
 
-
-
 			if (id) {
 				// 更新
-				sql = 'UPDATE members SET member_name=?, member_phone=?, remarks =?,recommendation_code =?，membership_level=？ WHERE id=?';
+				sql = 'UPDATE goodstype SET goods_typename=?, remarks=? WHERE id=?';
 
-				arr = [member_name, member_phone, remarks, recommendation_code, membership_level, id];
+				arr = [goods_typename, remarks,  id];
 			} else {
 				// 新增
-				sql = 'INSERT INTO members(member_name, member_phone,remarks,recommendation_code,membership_level) VALUES(?,?,?,?,?)';
-				arr = [member_name, member_phone, remarks, recommendation_code, membership_level];
+				sql = 'INSERT INTO goodstype(goods_typename, remarks) VALUES(?,?)';
+				arr = [goods_typename, remarks, remarks];
 
 
 			}
@@ -128,15 +121,13 @@ module.exports = {
 	},
 
 
-	// 删除会员
+	// 删除类型
 
 	deleteOne(req, res) {
 
 		let id = req.body.id;
-
-
 		pool.getConnection(function (err, connection) {
-			var sql = 'DELETE  from members WHERE id = ' + connection.escape(id);
+			var sql = 'DELETE  from goodstype WHERE id = ' + connection.escape(id);
 			connection.query(sql, function (err, rows) {
 
 				res.json({
@@ -152,54 +143,9 @@ module.exports = {
 
 
 
-	// 批量删除
-	deleteMulti(req, res) {
-		let id = req.body.id;
-
-		console.log(id);
-		pool.getConnection(function (err, connection) {
-
-			let sql = 'DELETE  from members WHERE id in ?';
-			let arr = [[id]];
-			connection.query(sql, arr, function (err, rows) {
-
-
-				res.json({
-					code: 200,
-					msg: 'done'
-				});
-			});
-
-		})
-	},
 
 
 
-	// 权限变更
-	changeRole(req, res) {
-		let change_role = req.body.change_role;
-
-		let id = req.body.id;
-		
-		console.log("role",change_role);
-
-			console.log("id",id);
-		
-		
-		pool.getConnection(function (err, connection) {
-			var sql = 'UPDATE members SET membership_level= ' + connection.escape(change_role) + 'WHERE id = ' + connection.escape(id);
-			connection.query(sql, function (err, rows) {
-
-
-
-				res.json({
-					code: 200,
-					msg: 'done'
-				});
-
-			});
-
-		})
-	},
+	
 
 };

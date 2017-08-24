@@ -10,7 +10,7 @@ CREATE TABLE `goods` (
   `name` varchar(50) NOT NULL DEFAULT 'noname',
   `price` float(10,2) NOT NULL DEFAULT '0.00',
   `inventory` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '库存',
-  `category` varchar(50) DEFAULT '' COMMENT '分类',
+  `goods_type` varchar(50) DEFAULT '' COMMENT '分类',
   `imgs` varchar(50) DEFAULT '',
   `onsale` tinyint(4) unsigned NOT NULL DEFAULT '0' COMMENT '是否上架',
   PRIMARY KEY (`id`),
@@ -51,12 +51,22 @@ CREATE TABLE `members` (
 
 
 
+DROP TABLE IF EXISTS `goodstype`;
+CREATE TABLE `members` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `goods_type` varchar(50) NOT NULL DEFAULT '',
+  `goods_typename` varchar(100) NOT NULL DEFAULT '',
+  `remarks` varchar(100) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8;
 
 
 
 
-
-
+ 
 
 
 

@@ -13,9 +13,9 @@
 
         <el-form-item label="用户权限">
             <el-radio-group v-model="form.role">
-                <el-radio label="1">普通用户</el-radio>
-                <el-radio label="10">管理员</el-radio>
-                <el-radio label="100">超级管理员</el-radio>
+                <el-radio :label="1">普通用户</el-radio>
+                <el-radio :label="10">管理员</el-radio>
+                <el-radio :label="100">超级管理员</el-radio>
             </el-radio-group>
         </el-form-item>
 
@@ -36,7 +36,7 @@
                 form: {
                     name: '',
                     pass: '',
-                    role: 0,
+                    role: '',
                 }
             }
         },

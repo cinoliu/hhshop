@@ -12,15 +12,15 @@
             <el-input v-model="form.recommendation_code"></el-input>
         </el-form-item>
 		
+			<el-form-item label="会员等级">
+			<el-radio-group v-model="form.membership_level">
+				<el-radio class="radio" :label="1">普通会员</el-radio>
+				<el-radio class="radio" :label="10">金牌会员</el-radio>
+				<el-radio class="radio" :label="100">VIP会员</el-radio>
+			</el-radio-group>
+		</el-form-item>
 		
-        <el-form-item label="会员等级">
-            <el-radio-group v-model="form.membership_level">
-                <el-radio label="1">普通会员</el-radio>
-                <el-radio label="10">金牌会员</el-radio>
-                <el-radio label="100">VIP会员</el-radio>
-            </el-radio-group>
-        </el-form-item>
-
+		
 		
 		 <el-form-item label="备注">
          		<el-input type="textarea" :rows="3"  placeholder="请输入内容" v-model="form.remarks">
@@ -46,7 +46,7 @@
 					member_phone: '',
 					remarks: '',
 					recommendation_code: '',
-					membership_level: 1,
+					membership_level: '',
 				}
 			}
 		},
@@ -82,8 +82,8 @@
 				this.func.ajaxPost(this.api.memberDetail, {
 					id
 				}, res => {
-					this.form = res.data.members;
-					this.form.id = res.data.members.id;
+					this.form = res.data.resultList;
+					this.form.id = res.data.resultList.id;
 				});
 			}
 		},

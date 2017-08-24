@@ -5,10 +5,17 @@ import Login from "../components/common/login.vue";
 
 import UserForm from "../components/user/user-form.vue";
 import UserList from "../components/user/user-list.vue";
-import GoodsForm from "../components/goods/goods-form.vue";
-import GoodsList from "../components/goods/goods-list.vue";
+
 import MemberForm from "../components/member/member-form.vue";
 import MemberList from "../components/member/member-list.vue";
+
+import GoodstypeForm from "../components/goodstype/goodstype-form.vue";
+import GoodstypeList from "../components/goodstype/goodstype-list.vue";
+
+
+import GoodsForm from "../components/goods/goods-form.vue";
+import GoodsList from "../components/goods/goods-list.vue";
+
 
 
 Vue.use(Router);
@@ -30,17 +37,7 @@ export default new Router({
                     component: UserForm,
                 },
 				
-                {
-                    path: '/admin/goods-list',
-                    component: GoodsList,
-                },
-                {
-                    path: '/admin/goods-form',
-                    component: GoodsForm,
-                },
-              
-				
-				   {
+				  {
                     path: '/admin/member-list',
                     component: MemberList,
                 },
@@ -49,6 +46,26 @@ export default new Router({
                     component: MemberForm,
                 },
 				
+				  {
+                    path: '/admin/goodstype-list',
+                    component: GoodstypeList,
+                },
+				
+                {
+                    path: '/admin/goodstype-form',
+                    component: GoodstypeForm,
+                },
+                {
+                    path: '/admin/goods-list',
+                    component: GoodsList,
+                },
+                {
+                    path: '/admin/goods-form',
+                    component: GoodsForm,
+                }
+              
+				
+				 
 				
             ]
         },

@@ -1,4 +1,5 @@
-let baseUrl = 'http://localhost:9999/api';
+//let baseUrl = 'http://localhost:9999/api';
+let baseUrl ='/api';
 
 module.exports = {
    
@@ -23,6 +24,14 @@ module.exports = {
     memberDeleteMulti: baseUrl + '/member/delete-multi',
     memberChangeRole: baseUrl + '/member/change-role',
 
+	
+	
+	// goodstype
+    goodstypeList: baseUrl + '/goodstype/list',
+    goodstypeDetail: baseUrl + '/goodstype/detail',
+    goodstypeDelete: baseUrl + '/goodstype/delete',
+    goodstypeAdd: baseUrl + '/goodstype/add',
+   
 	
 
 	

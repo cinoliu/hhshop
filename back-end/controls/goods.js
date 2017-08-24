@@ -21,7 +21,7 @@ module.exports = {
     // 获取商品列表
     fetchAll (req, res) {
 		 let cur_page =req.body.cur_page;
-		 let name =req.body.name;
+		 let goods_name =req.body.goods_name;
 		  let sql, arr ,endLimit ,startLimit;
 		
 		console.log(req.body.cur_page);
@@ -29,10 +29,10 @@ module.exports = {
 			
 			 endLimit = cur_page *10;
 			 startLimit =  endLimit -10;
-			if(name){
+			if(goods_name){
 				
-					 sql ='select * from goods where name =?   limit ?, ?';
-					 arr = [name,startLimit , endLimit];
+					 sql ='select * from goods where goods_name =?';
+					 arr = [goods_name];
 				    
 			}else{
 				
@@ -44,7 +44,7 @@ module.exports = {
 
 			console.log(rows);
             rows = formatData(rows);
-            res.json({code: 200, msg: 'ok', goods: rows});
+            res.json({code: 200, msg: 'ok', resultList: rows});
         });
     })},
 
@@ -57,7 +57,7 @@ module.exports = {
 			connection.query(sql, function (err, rows) {
 		
             rows = formatData(rows);
-            res.json({code: 200, msg: 'ok', goods: rows[0]});
+            res.json({code: 200, msg: 'ok', resultList: rows[0]});
         });
 
     })},
@@ -66,24 +66,25 @@ module.exports = {
     addOne (req, res) {
         let id = req.body.id;
         console.log(id);
-        let name = req.body.name;
-        let price = req.body.price;
+        let goods_name = req.body.goods_name;
+        let goods_price = req.body.goods_price;
         let sql, arr;
 		
 	pool.getConnection(function (err, connection) {
 
         if (id ) {
             // 更新
-            sql = 'UPDATE goods SET name=?, price=? WHERE id=?';
-            arr = [name, price, id];
+            sql = 'UPDATE goods SET goods_name=?, goods_price=? WHERE id=?';
+            arr = [goods_name, goods_price, id];
         } else {
             // 新增
-            sql = 'INSERT INTO goods(name, price) VALUES(?,?)';
-            arr = [name, price];
+            sql = 'INSERT INTO goods(goods_name, goods_price) VALUES(?,?)';
+            arr = [goods_name, goods_price];
 			
         }	
 		connection.query(sql,arr, function (err, rows) {
 
+			console.log("err",err);
 					res.json({
 						code: 200,
 						msg: 'done'
@@ -147,7 +148,7 @@ module.exports = {
 	//图片上传
 	
     uploadGoodsImg (req, res) {
-        let absolutePath = path.resolve(__dirname, req.file.path);
+        let absolutePath = path.resolve(__dirgoods_name, req.file.path);
         let a  = 2;
 
         func.connPool('UPDATE goods SET imgs = ? WHERE id = ?', [absolutePath, 60], (err, rows) => {
