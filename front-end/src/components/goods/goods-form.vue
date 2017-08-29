@@ -16,14 +16,22 @@
 	<el-input-number v-model="form.inventory" :min="0"></el-input-number>
 </el-form-item>
 
-<!--
-  <el-form-item label="活动区域">
-    <el-select v-model="form.region" placeholder="请选择活动区域">
-      <el-option label="区域一" value="shanghai"></el-option>
-      <el-option label="区域二" value="beijing"></el-option>
-    </el-select>
+  <el-form-item label="商品类型">	  
+	 <el-select v-model="form.goods_typename"     placeholder="请选择商品类型">
+    <el-option
+      v-for="item in goodsTpyeList"
+      :key="item.goods_typename"
+      :label="item.goods_typename"
+      :value="item.goods_typename">
+    </el-option>
+  </el-select>    
   </el-form-item>
--->
+	  
+
+
+
+
+
 
 
 <el-form-item label="商品状态">
@@ -81,9 +89,10 @@
 					inventory: 0,
 					imgs: '',
 					goods_type: '',
+					goods_typename:'',
 
 				},
-
+                 goodsTpyeList:"",
 				 dialogImageUrl: '',
 				dialogVisible: false
 			}
@@ -106,6 +115,21 @@
 				});
 			},
 
+			
+			goodsType(){
+				
+				this.func.ajaxPost(this.api.goodsType, this.form, res => {
+					if (res.data.code === 200) {
+						this.goodsTpyeList =res.data.resultList;
+						console.log(res.data.resultList);
+					
+					}
+				});
+				
+			},
+			
+			
+			
 			onCancel() {
 				this.$router.push('/admin/goods-list');
 			},
@@ -140,6 +164,8 @@
 					this.form.id = res.data.resultList.id;
 				});
 			}
+			
+			this.goodsType();
 		},
 
 	}

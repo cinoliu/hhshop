@@ -1,0 +1,11 @@
+{
+"apps" : [{
+"name" : "dev",
+"script": "server.js",
+"error_file":"/var/log/nodejs/pm2-err.log",//错误输出日志
+"out_file":"/var/log/nodejs/pm2-out.log",  //日志
+"log_date_format":"YYYY-MM-DD HH:mm Z" ,//日期格式
+"exec_interpreter":"babel-node"	
+	
+}]
+}

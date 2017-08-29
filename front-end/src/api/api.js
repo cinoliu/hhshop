@@ -36,7 +36,8 @@ module.exports = {
 
 	
 	 // goods
-    goodsList: baseUrl + '/goods/list',
+    goodsList: baseUrl + '/goods/list',	
+	goodsType:baseUrl + '/goods/fetchType',	
     goodsDetail: baseUrl + '/goods/detail',
     goodsDelete: baseUrl + '/goods/delete',
     goodsAdd: baseUrl + '/goods/add',

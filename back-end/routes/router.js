@@ -52,6 +52,7 @@ router.post(api.goodstypeDelete, goodstype.deleteOne);
 
 // goods
 router.post(api.goodsList, goods.fetchAll);
+router.post(api.goodsType, goods.fetchType);
 router.post(api.goodsDetail, goods.fetchById);
 router.post(api.goodsAdd, goods.addOne);
 router.post(api.goodsDelete, goods.deleteOne);

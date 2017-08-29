@@ -48,6 +48,35 @@ module.exports = {
         });
     })},
 
+	  fetchType (req, res) {
+		
+		  let sql;
+		
+		console.log(req.body.cur_page);
+		pool.getConnection(function (err, connection) {
+			
+		
+				
+			 sql ='select * from goodstype  ';
+				
+		
+		
+			connection.query(sql, function (err, rows) {
+
+			console.log(rows);
+            rows = formatData(rows);
+            res.json({code: 200, msg: 'ok', resultList: rows});
+        });
+    })},
+	
+	
+	
+	
+	
+	
+	
+	
+	
     // 获取商品详情
     fetchById (req, res) {
         let id = req.body.id;
@@ -68,18 +97,21 @@ module.exports = {
         console.log(id);
         let goods_name = req.body.goods_name;
         let goods_price = req.body.goods_price;
+		let goods_type =req.body.goods_type;
+		let goods_typename =req.body.goods_typename;
+		let inventory =req.body.inventory;
         let sql, arr;
 		
 	pool.getConnection(function (err, connection) {
 
         if (id ) {
             // 更新
-            sql = 'UPDATE goods SET goods_name=?, goods_price=? WHERE id=?';
-            arr = [goods_name, goods_price, id];
+            sql = 'UPDATE goods SET goods_name=?, goods_price=? ,goods_type =? ,goods_typename =? ,inventory =? WHERE id=?';
+            arr = [goods_name, goods_price,goods_type,goods_typename,inventory, id];
         } else {
             // 新增
-            sql = 'INSERT INTO goods(goods_name, goods_price) VALUES(?,?)';
-            arr = [goods_name, goods_price];
+            sql = 'INSERT INTO goods(goods_name, goods_price,goods_type,goods_typename,inventory) VALUES(?,?,?,?,?)';
+            arr = [goods_name, goods_price,goods_type,goods_typename,inventory];
 			
         }	
 		connection.query(sql,arr, function (err, rows) {

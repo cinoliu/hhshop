@@ -36,6 +36,7 @@ module.exports = {
 	
 	 // goods
     goodsList: path + '/goods/list',
+	goodsType:path + '/goods/fetchType',	
     goodsDetail: path + '/goods/detail',
     goodsDelete: path + '/goods/delete',
     goodsAdd: path + '/goods/add',
