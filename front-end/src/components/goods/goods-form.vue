@@ -88,6 +88,9 @@
 				dialogVisible: false
 			}
 		},
+		
+		
+		
 		methods: {
 			onSubmit() {
 				if (!this.form.goods_name) {
