@@ -25,12 +25,14 @@
 
 ```bash
 # front-end
+npm install
 npm run dev
 npm run build
 
 localhost:8888
 
 # back-end
+npm install
 node  app.js
 localhost:9999/api/
 
