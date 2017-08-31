@@ -186,7 +186,7 @@
 				this.$router.push({
 					path: '/admin/member-form',
 					query: {
-						id: row.id
+						member_id: row.member_id
 					}
 				});
 			},
@@ -196,7 +196,7 @@
 			// 删除
 			handleDelete(row) {
 				this.func.ajaxPost(this.api.memberDelete, {
-					id: row.id
+					member_id: row.member_id
 				}, res => {
 					if (res.data.code === 200) {
 						let index = this.tableData.indexOf(row);
@@ -210,7 +210,7 @@
 			changeRole(val) {
 				this.func.ajaxPost(this.api.memberChangeRole, {
 						change_role: val,
-						id: this.curRow.id
+						member_id: this.curRow.member_id
 					},
 					res => {
 						if (res.data.code === 200) {

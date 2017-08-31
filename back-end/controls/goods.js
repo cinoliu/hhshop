@@ -3,9 +3,6 @@ let moment = require('moment');
 let func = require('../sql/func');
 let path = require('path');
 
-let mysql = require('mysql');
-let db = require('../configs/db');
-let pool = mysql.createPool(db);
 
 
 
@@ -88,10 +85,10 @@ module.exports = {
 	// 获取商品详情
 
 	fetchById(req, res) {
-		let id = req.body.id;
+		let goods_id = req.body.goods_id;
 
-		let sql = 'select * from goods WHERE id = ?';
-		let arr = [id];
+		let sql = 'select * from goods WHERE goods_id = ?';
+		let arr = [goods_id];
 
 		func.connPool(sql, arr, (err, rows) => {
 
@@ -112,8 +109,8 @@ module.exports = {
 
 	// 添加|更新 商品
 	addOne(req, res) {
-		let id = req.body.id;
-		console.log(id);
+		let goods_id = req.body.goods_id;
+		console.log(goods_id);
 		let goods_name = req.body.goods_name;
 		let goods_price = req.body.goods_price;
 		let goods_type = req.body.goods_type;
@@ -130,10 +127,10 @@ module.exports = {
 
 
 
-		if (id) {
+		if (goods_id) {
 			// 更新
-			sql = 'UPDATE goods SET goods_name=?, goods_price=? ,goods_type =? ,goods_typename =? ,inventory =? ,imgs =?,onsale=?,goods_details =?  WHERE id=?';
-			arr = [goods_name, goods_price, goods_type, goods_typename, inventory,imgs,onsale, goods_details,id];
+			sql = 'UPDATE goods SET goods_name=?, goods_price=? ,goods_type =? ,goods_typename =? ,inventory =? ,imgs =?,onsale=?,goods_details =?  WHERE goods_id=?';
+			arr = [goods_name, goods_price, goods_type, goods_typename, inventory,imgs,onsale, goods_details,goods_id];
 		} else {
 			// 新增
 			sql = 'INSERT INTO goods(goods_name, goods_price,goods_type,goods_typename,inventory,imgs,onsale, goods_details) VALUES(?,?,?,?,?,?,?,?)';
@@ -161,10 +158,10 @@ module.exports = {
 
 	deleteOne(req, res) {
 
-		let id = req.body.id;
+		let goods_id = req.body.goods_id;
 
-		let sql = 'select * from goods WHERE user_name = ?';
-		let arr = [id];
+		let sql = 'DELETE  from goods WHERE goods_id = ?';
+		let arr = [goods_id];
 
 		func.connPool(sql, arr, (err, rows) => {
 			res.json({
@@ -180,10 +177,10 @@ module.exports = {
 
 	// 批量删除
 	deleteMulti(req, res) {
-		let id = req.body.id;
+		let goods_id = req.body.goods_id;
 
-		let sql = 'DELETE  from goods WHERE id in ?';
-		let arr = [[id]];
+		let sql = 'DELETE  from goods WHERE goods_id in ?';
+		let arr = [[goods_id]];
 
 		func.connPool(sql, arr, (err, rows) => {
 			res.json({

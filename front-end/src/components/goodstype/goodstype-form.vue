@@ -30,7 +30,7 @@
 			return {
 				isNew: 1, // 是否是添加
 				form: {
-					id: undefined,
+					goods_type: undefined,
 					goods_typename: '',
 					remarks:'',
 					
@@ -59,16 +59,16 @@
 		},
 
 		created() {
-			let id = this.$route.query.id;
+			let goods_type = this.$route.query.goods_type;
 
-			if (id) {
+			if (goods_type) {
 				this.isNew = 0;
 
 				this.func.ajaxPost(this.api.goodsDetail, {
-					id
+					goods_type
 				}, res => {
 					this.form = res.data.resultList;
-					this.form.id = res.data.resultList.id;
+					this.form.goods_type = res.data.resultList.goods_type;
 				});
 			}
 		},

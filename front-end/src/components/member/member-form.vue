@@ -20,7 +20,18 @@
 			</el-radio-group>
 		</el-form-item>
 		
+		  <el-form-item label="收货地址1">
+    <el-input v-model="form.member_address1"></el-input>
+  </el-form-item>
 		
+		
+			  <el-form-item label="收货地址2">
+    <el-input v-model="form.member_address2"></el-input>
+  </el-form-item>
+		
+			  <el-form-item label="收货地址3">
+    <el-input v-model="form.member_address3"></el-input>
+  </el-form-item>
 		
 		 <el-form-item label="备注">
          		<el-input type="textarea" :rows="3"  placeholder="请输入内容" v-model="form.remarks">
@@ -47,6 +58,9 @@
 					remarks: '',
 					recommendation_code: '',
 					membership_level: '',
+					member_address1:'',
+					member_address2:'',
+					member_address3:'',
 				}
 			}
 		},
@@ -57,6 +71,8 @@
 					return;
 				}
 
+				console.log(this.form);
+				
 				this.func.ajaxPost(this.api.memberAdd, this.form, res => {
 
 					if (res.data.code === 200) {
@@ -74,16 +90,16 @@
 
 
 		created() {
-			let id = this.$route.query.id;
+			let member_id = this.$route.query.member_id;
 
-			if (id) {
+			if (member_id) {
 				this.isNew = 0;
 
 				this.func.ajaxPost(this.api.memberDetail, {
-					id
+					member_id
 				}, res => {
 					this.form = res.data.resultList;
-					this.form.id = res.data.resultList.id;
+					this.form.member_id = res.data.resultList.member_id;
 				});
 			}
 		},

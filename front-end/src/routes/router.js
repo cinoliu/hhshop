@@ -17,6 +17,8 @@ import GoodsForm from "../components/goods/goods-form.vue";
 import GoodsList from "../components/goods/goods-list.vue";
 
 
+import orderForm from "../components/order/order-form.vue";
+import orderList from "../components/order/order-list.vue";
 
 Vue.use(Router);
 
@@ -62,9 +64,17 @@ export default new Router({
                 {
                     path: '/admin/goods-form',
                     component: GoodsForm,
+                }      
+				,
+                {
+                    path: '/admin/order-list',
+                    component: orderList,
+                },
+                {
+                    path: '/admin/order-form',
+                    component: orderForm,
                 }
               
-				
 				 
 				
             ]

@@ -4,7 +4,7 @@ SET FOREIGN_KEY_CHECKS=0;
 
 DROP TABLE IF EXISTS `goods`;
 CREATE TABLE `goods` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `goods_id` int(11) NOT NULL AUTO_INCREMENT,
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `goods_name` varchar(50) NOT NULL DEFAULT 'noname',
@@ -38,7 +38,7 @@ CREATE TABLE `user` (
 
 DROP TABLE IF EXISTS `members`;
 CREATE TABLE `members` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `members_id` int(11) NOT NULL AUTO_INCREMENT,
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `member_name` varchar(50) NOT NULL DEFAULT 'noname',
@@ -54,7 +54,7 @@ CREATE TABLE `members` (
 
 DROP TABLE IF EXISTS `goodstype`;
 CREATE TABLE `members` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `goodstype` int(11) NOT NULL AUTO_INCREMENT,
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `goods_type` varchar(50) NOT NULL DEFAULT '',

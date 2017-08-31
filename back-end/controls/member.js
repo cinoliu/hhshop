@@ -63,10 +63,10 @@ module.exports = {
 	// 获取会员详情
 
 	fetchById(req, res) {
-		let id = req.body.id;
+		let member_id = req.body.member_id;
 
-		let sql = 'select * from members WHERE id = ?';
-		let arr = [id];
+		let sql = 'select * from members WHERE member_id = ?';
+		let arr = [member_id];
 
 
 
@@ -90,8 +90,8 @@ module.exports = {
 
 	// 添加|更新 会员
 	addOne(req, res) {
-		let id = req.body.id;
-		console.log(id);
+		let member_id = req.body.member_id;
+		console.log(member_id);
 
 		let member_name = req.body.member_name;
 		let member_phone = req.body.member_phone;
@@ -100,21 +100,26 @@ module.exports = {
 		let recommendation_code = req.body.recommendation_code;
 
 		let membership_level = req.body.membership_level;
+		let member_address1 = req.body.member_address1;
+		let member_address2 = req.body.member_address2;
+		let member_address3 = req.body.member_address3;
 		let sql, arr;
 
 
 
 
 
-			if (id) {
+			if (member_id) {
 				// 更新
-				sql = 'UPDATE members SET member_name=?, member_phone=?, remarks =?,recommendation_code =?，membership_level=？ WHERE id=?';
-
-				arr = [member_name, member_phone, remarks, recommendation_code, membership_level, id];
+			
+				sql = 'UPDATE members SET member_name=?, member_phone=? ,remarks =? ,recommendation_code =? ,membership_level =? ,member_address1 =?,member_address2=?,member_address3 =?  WHERE member_id=?';
+				
+				
+				arr = [member_name, member_phone, remarks, recommendation_code, membership_level, member_address1,member_address2,member_address3,member_id];
 			} else {
 				// 新增
-				sql = 'INSERT INTO members(member_name, member_phone,remarks,recommendation_code,membership_level) VALUES(?,?,?,?,?)';
-				arr = [member_name, member_phone, remarks, recommendation_code, membership_level];
+				sql = 'INSERT INTO members(member_name, member_phone,remarks,recommendation_code,membership_level,member_address1,member_address2,member_address3) VALUES(?,?,?,?,?,?,?,?)';
+				arr = [member_name, member_phone, remarks, recommendation_code, membership_level,member_address1,member_address2,member_address3];
 
 
 			}
@@ -138,10 +143,10 @@ module.exports = {
 
 	deleteOne(req, res) {
 
-		let id = req.body.id;
-		let sql = 'DELETE  from members WHERE id =?';
+		let member_id = req.body.member_id;
+		let sql = 'DELETE  from members WHERE member_id =?';
 	
-		let arr = [id];
+		let arr = [member_id];
 
 		func.connPool(sql, arr, (err, rows) => {
 			res.json({
@@ -156,10 +161,10 @@ module.exports = {
 
 	// 批量删除
 	deleteMulti(req, res) {
-		let id = req.body.id;
+		let member_id = req.body.member_id;
 
-		let sql = 'DELETE  from members WHERE id in ?';
-		let arr = [[id]];
+		let sql = 'DELETE  from members WHERE member_id in ?';
+		let arr = [[member_id]];
 
 		func.connPool(sql, arr, (err, rows) => {
 			res.json({
@@ -178,16 +183,14 @@ module.exports = {
 	changeRole(req, res) {
 		let change_role = req.body.change_role;
 
-		let id = req.body.id;
+		let member_id = req.body.member_id;
 		
-		console.log("role",change_role);
-
-			console.log("id",id);
+	
 		
 		
-			let sql = 'UPDATE members SET membership_level= ? WHERE id = ?' ;
+			let sql = 'UPDATE members SET membership_level= ? WHERE member_id = ?' ;
 		
-		let arr = [change_role,id];
+		let arr = [change_role,member_id];
 		
 		func.connPool(sql, arr, (err, rows) => {
 			res.json({

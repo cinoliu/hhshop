@@ -27,7 +27,7 @@
 # front-end
 npm install
 npm run dev
-npm run build
+npm run build (需要改 webpage.config.js  下 publicPath: '/' 为   publicPath: './')
 
 localhost:8888
 

@@ -64,10 +64,10 @@ module.exports = {
 	// 获取详情
 
 	fetchById(req, res) {
-		let id = req.body.id;
+		let goods_type = req.body.goods_type;
 
-		let sql = 'select * from goodstype WHERE id = ?';
-		let arr = [id];
+		let sql = 'select * from goodstype WHERE goods_type = ?';
+		let arr = [goods_type];
 
 
 		func.connPool(sql, arr, (err, rows) => {
@@ -93,9 +93,8 @@ module.exports = {
 
 	// 添加|更新 会员
 	addOne(req, res) {
-		let id = req.body.id;
-		console.log(id);
-
+		let goods_type = req.body.goods_type;
+	
 		let goods_typename = req.body.goods_typename;
 		let remarks = req.body.remarks;
 
@@ -104,11 +103,11 @@ module.exports = {
 
 
 
-		if (id) {
+		if (goods_type) {
 			// 更新
-			sql = 'UPDATE goodstype SET goods_typename=?, remarks=? WHERE id=?';
+			sql = 'UPDATE goodstype SET goods_typename=?, remarks=? WHERE goods_type=?';
 
-			arr = [goods_typename, remarks, id];
+			arr = [goods_typename, remarks, goods_type];
 		} else {
 			// 新增
 			sql = 'INSERT INTO goodstype(goods_typename, remarks) VALUES(?,?)';
@@ -118,17 +117,12 @@ module.exports = {
 		}
 
 
-
 		func.connPool(sql, arr, (err, rows) => {
 			res.json({
 				code: 200,
 				msg: 'done'
 			});
 		});
-
-
-
-
 
 
 	},
@@ -140,10 +134,10 @@ module.exports = {
 
 	deleteOne(req, res) {
 
-		let id = req.body.id;
+		let goods_type = req.body.goods_type;
 
-		let sql = 'select * from goodstype WHERE user_name = ?';
-		let arr = [id];
+		let sql = 'DELETE from goodstype WHERE goods_type = ?';
+		let arr = [goods_type];
 
 		func.connPool(sql, arr, (err, rows) => {
 			res.json({

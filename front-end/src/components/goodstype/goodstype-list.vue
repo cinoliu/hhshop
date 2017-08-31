@@ -142,7 +142,7 @@
 			},
   // 删除
             handleDelete(row) {
-                this.func.ajaxPost(this.api.goodstypeDelete, {id: row.id}, res => {
+                this.func.ajaxPost(this.api.goodstypeDelete, {goods_type: row.goods_type}, res => {
                     if (res.data.code === 200) {
                         let index = this.tableData.indexOf(row);
                         this.tableData.splice(index, 1);

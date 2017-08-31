@@ -56,6 +56,14 @@
 
 
 
+<el-submenu index="5">
+	<template slot="title">订单管理</template>
+	<router-link to="/admin/order-list">
+		<el-menu-item index="5-1">订单列表</el-menu-item>
+	</router-link>
+
+	
+</el-submenu>
 
 
 

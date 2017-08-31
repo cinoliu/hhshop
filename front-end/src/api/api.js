@@ -1,5 +1,5 @@
-//let baseUrl = 'http://localhost:9999/api';
-let baseUrl ='/api';
+let baseUrl = 'http://localhost:9999/api';
+//let baseUrl ='/api';
 
 module.exports = {
    
