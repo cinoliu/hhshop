@@ -3,9 +3,6 @@ let moment = require('moment');
 let func = require('../sql/func');
 let path = require('path');
 
-let mysql = require('mysql');
-let db = require('../configs/db');
-let pool = mysql.createPool(db);
 
 
 
@@ -29,7 +26,7 @@ module.exports = {
 		  let sql, arr ,endLimit ,startLimit;
 		
 		console.log(req.body.cur_page);
-		pool.getConnection(function (err, connection) {
+	
 			
 			 endLimit = cur_page *10;
 			 startLimit =  endLimit -10;
@@ -44,13 +41,19 @@ module.exports = {
 				   arr = [startLimit , endLimit];
 			}
 		
-			connection.query(sql,arr, function (err, rows) {
+	
+	   
+	   	func.connPool(sql, arr, (err, rows) => {
+			rows = formatData(rows);
+			res.json({
+				code: 200,
+				msg: 'ok',
+				resultList: rows
+			});
 
-			console.log(rows);
-            rows = formatData(rows);
-            res.json({code: 200, msg: 'ok', resultList: rows});
-        });
-    })},
+		});
+	   
+	   },
 	
 	
 	
@@ -58,24 +61,32 @@ module.exports = {
 	
 	
 	// 获取会员详情
+
 	fetchById(req, res) {
 		let id = req.body.id;
 
+		let sql = 'select * from members WHERE id = ?';
+		let arr = [id];
 
-		pool.getConnection(function (err, connection) {
-			var sql = 'select * from members WHERE id = ' + connection.escape(id);
-			connection.query(sql, function (err, rows) {
 
-				rows = formatData(rows);
-				res.json({
-					code: 200,
-					msg: 'ok',
-					resultList: rows[0]
-				});
+
+		func.connPool(sql, arr, (err, rows) => {
+
+			rows = formatData(rows);
+			res.json({
+				code: 200,
+				msg: 'ok',
+				resultList: rows[0]
 			});
+		});
 
-		})
+
 	},
+
+	
+	
+	
+	
 
 	// 添加|更新 会员
 	addOne(req, res) {
@@ -93,8 +104,6 @@ module.exports = {
 
 
 
-		pool.getConnection(function (err, connection) {
-
 
 
 			if (id) {
@@ -110,19 +119,16 @@ module.exports = {
 
 			}
 
-			connection.query(sql, arr, function (err, rows) {
 
-				res.json({
-					code: 200,
-					msg: 'done'
-				});
+		
 
+	func.connPool(sql, arr, (err, rows) => {
+			res.json({
+				code: 200,
+				msg: 'done'
+			});
 
-			})
-		})
-
-
-
+		});
 
 
 	},
@@ -133,22 +139,18 @@ module.exports = {
 	deleteOne(req, res) {
 
 		let id = req.body.id;
+		let sql = 'DELETE  from members WHERE id =?';
+	
+		let arr = [id];
 
-
-		pool.getConnection(function (err, connection) {
-			var sql = 'DELETE  from members WHERE id = ' + connection.escape(id);
-			connection.query(sql, function (err, rows) {
-
-				res.json({
-					code: 200,
-					msg: 'done'
-				});
+		func.connPool(sql, arr, (err, rows) => {
+			res.json({
+				code: 200,
+				msg: 'done'
 			});
+		});
 
-		})
 	},
-
-
 
 
 
@@ -156,21 +158,18 @@ module.exports = {
 	deleteMulti(req, res) {
 		let id = req.body.id;
 
-		console.log(id);
-		pool.getConnection(function (err, connection) {
+		let sql = 'DELETE  from members WHERE id in ?';
+		let arr = [[id]];
 
-			let sql = 'DELETE  from members WHERE id in ?';
-			let arr = [[id]];
-			connection.query(sql, arr, function (err, rows) {
-
-
-				res.json({
-					code: 200,
-					msg: 'done'
-				});
+		func.connPool(sql, arr, (err, rows) => {
+			res.json({
+				code: 200,
+				msg: 'done'
 			});
+		});
 
-		})
+
+
 	},
 
 
@@ -186,20 +185,18 @@ module.exports = {
 			console.log("id",id);
 		
 		
-		pool.getConnection(function (err, connection) {
-			var sql = 'UPDATE members SET membership_level= ' + connection.escape(change_role) + 'WHERE id = ' + connection.escape(id);
-			connection.query(sql, function (err, rows) {
-
-
-
-				res.json({
-					code: 200,
-					msg: 'done'
-				});
-
+			let sql = 'UPDATE members SET membership_level= ? WHERE id = ?' ;
+		
+		let arr = [change_role,id];
+		
+		func.connPool(sql, arr, (err, rows) => {
+			res.json({
+				code: 200,
+				msg: 'done'
 			});
+		});
 
-		})
+
 	},
 
 };

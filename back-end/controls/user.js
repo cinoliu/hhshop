@@ -4,8 +4,7 @@ let bcrypt = require('bcryptjs');
 let func = require('../sql/func');
 let mysql = require('mysql');
 
-let db = require('../configs/db');
-let pool = mysql.createPool(db);
+
 
 function formatData(rows) {
 	return rows.map(row => {
@@ -41,7 +40,7 @@ module.exports = {
 		
 		
 
-		pool.getConnection(function (err, connection) {
+	
 				 endLimit = cur_page *10;
 			 startLimit =  endLimit -10;
 			
@@ -49,18 +48,23 @@ module.exports = {
 				sql ='select * from user  limit ?, ?';
 				   arr = [startLimit , endLimit];
 			
-			connection.query(sql,arr, function (err, rows) {
-
-
-				rows = formatData(rows);
-				res.json({
-					code: 200,
-					msg: 'ok',
-					resultList: rows
-				});
+		
+		
+		
+		func.connPool(sql, arr, (err, rows) => {
+			rows = formatData(rows);
+			res.json({
+				code: 200,
+				msg: 'ok',
+				resultList: rows
 			});
 
-		})
+		});
+		
+		
+
+
+	
 	},
 
 	// 添加用户
@@ -69,19 +73,24 @@ module.exports = {
 		let pass = req.body.pass;
 		let role = req.body.role;
 
-		pool.getConnection(function (err, connection) {
+		
 
-			let sql = 'INSERT INTO user(user_name, password,role) VALUES(?,?,?)';
-			let arr = [name, pass, role];
+		let sql = 'INSERT INTO user(user_name, password,role) VALUES(?,?,?)';
+		let arr = [name, pass, role];
 
-			connection.query(sql, arr, function (err, rows) {
+		
+		
+		func.connPool(sql, arr, (err, rows) => {
+			res.json({
+				code: 200,
+				msg: 'done'
+			});
 
-				res.json({
-					code: 200,
-					msg: 'done'
-				});
-			})
-		})
+		});
+		
+		
+	
+		
 	},
 
 
@@ -90,48 +99,52 @@ module.exports = {
 
 	deleteOne(req, res) {
 
-		console.log(req.body);
 		let id = req.body.id;
 
+		var sql = 'DELETE  from user WHERE id =? ' ;
+		
+		let arr = [id];
 
-		pool.getConnection(function (err, connection) {
-			var sql = 'DELETE  from user WHERE id = ' + connection.escape(id);
-			connection.query(sql, function (err, rows) {
-
-				res.json({
-					code: 200,
-					msg: 'done'
-				});
+		func.connPool(sql, arr, (err, rows) => {
+			res.json({
+				code: 200,
+				msg: 'done'
 			});
+		});
 
-		})
 	},
-
 
 
 
 
 
 	// 批量删除
-	deleteMulti(req, res) {
+
+		deleteMulti(req, res) {
 		let id = req.body.id;
 
-		console.log(id);
-		pool.getConnection(function (err, connection) {
+		let sql = 'DELETE  from user WHERE id in ?';
+		let arr = [[id]];
 
-			let sql = 'DELETE  from user WHERE id in ?';
-			let arr = [[id]];
-			connection.query(sql, arr, function (err, rows) {
-
-
-				res.json({
-					code: 200,
-					msg: 'done'
-				});
+		func.connPool(sql, arr, (err, rows) => {
+			res.json({
+				code: 200,
+				msg: 'done'
 			});
+		});
 
-		})
+
+
 	},
+
+	
+	
+	
+	
+	
+	
+	
+	
 
 	// 登录
 	login(req, res) {
@@ -141,10 +154,12 @@ module.exports = {
 		let password = req.body.password;
 
 		console.log("user_name", user_name)
-		pool.getConnection(function (err, connection) {
-			var sql = 'select * from user WHERE user_name = ' + connection.escape(user_name);
-			connection.query(sql, function (err, rows) {
-
+		
+			let sql = 'select * from user WHERE user_name = ? ';
+		
+			let arr = [user_name];
+		
+			func.connPool(sql, arr, (err, rows) => {
 				if (!rows.length) {
 
 					res.json({
@@ -173,38 +188,12 @@ module.exports = {
 				});
 
 
-
-				//				bcrypt.compare(password, pass, function (err, sure) {
-				//					if (sure) {
-				//						let user = {
-				//							user_id: rows[0].id,
-				//							user_name: rows[0].user_name,
-				//							role: rows[0].role,
-				//						};
-				//
-				//						req.session.login = user;
-				//
-				//						res.json({
-				//							code: 200,
-				//							msg: '登录成功',
-				//							user: user
-				//						});
-				//					} else {
-				//						res.json({
-				//							code: 400,
-				//							msg: '密码错误'
-				//						});
-				//					}
-				//				});
-				//
-
-
-			
-
-
-
-			});
 		});
+		
+		
+		
+		
+
 
 
 	},
@@ -264,22 +253,31 @@ module.exports = {
 			return;
 		}
 
-		let user_id = req.body.id;
+		let user_id = req.body.id;	
 
-		pool.getConnection(function (err, connection) {
-			var sql = 'UPDATE user SET role= ' + connection.escape(change_role) + 'WHERE id = ' + connection.escape(user_id);
-			connection.query(sql, function (err, rows) {
+		let sql = 'UPDATE user SET role= ? WHERE id =?';
+		let arr = [change_role,user_id];
 
-				console.log(rows);
-				if (rows.affectedRows) {
+		func.connPool(sql, arr, (err, rows) => {
+			if (rows.affectedRows) {
 					res.json({
 						code: 200,
 						msg: 'done'
 					});
 				}
-			});
+		});
 
-		})
+		
 	},
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
 
 };
