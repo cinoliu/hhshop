@@ -4,6 +4,7 @@ let user = require('../controls/user');
 let member =require('../controls/member');
 let goodstype = require('../controls/goodstype');
 let goods = require('../controls/goods');
+let order = require('../controls/order');
 
 let api = require('../api');
 let upload = require('../utils/upload');
@@ -58,5 +59,22 @@ router.post(api.goodsAdd, goods.addOne);
 router.post(api.goodsDelete, goods.deleteOne);
 router.post(api.goodsDeleteMulti, goods.deleteMulti);
 router.post(api.goodsUploadImg, upload.single('avatar'),goods.uploadGoodsImg); // 图片上传
+
+
+
+
+
+// goods
+router.post(api.orderList, order.fetchAll);
+
+router.post(api.orderDetail, order.fetchById);
+router.post(api.orderAdd, order.addOne);
+router.post(api.orderDelete, order.deleteOne);
+
+
+
+
+
+
 
 module.exports = router;

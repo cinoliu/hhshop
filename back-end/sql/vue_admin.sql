@@ -2,21 +2,6 @@
 SET FOREIGN_KEY_CHECKS=0;
 
 
-DROP TABLE IF EXISTS `goods`;
-CREATE TABLE `goods` (
-  `goods_id` int(11) NOT NULL AUTO_INCREMENT,
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `goods_name` varchar(50) NOT NULL DEFAULT 'noname',
-  `goods_price` float(10,2) NOT NULL DEFAULT '0.00',
-  `inventory` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '库存',
-  `goods_typename` varchar(50) DEFAULT '' COMMENT '分类',
-  `imgs` varchar(50) DEFAULT '',
-  `onsale` tinyint(4) unsigned NOT NULL DEFAULT '0' COMMENT '是否上架',
-  `goods_details` varchar(50) DEFAULT '' COMMENT '详情',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id` (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8;
 
 
 DROP TABLE IF EXISTS `user`;
@@ -44,28 +29,66 @@ CREATE TABLE `members` (
   `member_name` varchar(50) NOT NULL DEFAULT 'noname',
   `member_phone` varchar(100) NOT NULL DEFAULT '',
   `remarks` varchar(100) NOT NULL DEFAULT '',
- `recommendation_code` varchar(100) NOT NULL DEFAULT '',
+  `recommendation_code` varchar(100) NOT NULL DEFAULT '',
   `membership_level` tinyint(3) NOT NULL DEFAULT '0' COMMENT '会员等级',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id` (`id`) USING BTREE
+  `member_address1` varchar(100) NOT NULL DEFAULT '',		
+  `member_address2` varchar(100) NOT NULL DEFAULT '',	
+  `member_address3` varchar(100) NOT NULL DEFAULT '',	
+	
+	
+  PRIMARY KEY (`members_id`),
+  UNIQUE KEY `members_id` (`members_id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8;
 
 
 
 DROP TABLE IF EXISTS `goodstype`;
-CREATE TABLE `members` (
+CREATE TABLE `goodstype` (
   `goodstype` int(11) NOT NULL AUTO_INCREMENT,
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `goods_type` varchar(50) NOT NULL DEFAULT '',
   `goods_typename` varchar(100) NOT NULL DEFAULT '',
   `remarks` varchar(100) NOT NULL DEFAULT '',
+  PRIMARY KEY (`goodstype`),
+  UNIQUE KEY `goodstype` (`goodstype`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `goods`;
+CREATE TABLE `goods` (
+  `goods_id` int(11) NOT NULL AUTO_INCREMENT,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `goods_name` varchar(50) NOT NULL DEFAULT 'noname',
+  `goods_price` float(10,2) NOT NULL DEFAULT '0.00',
+  `inventory` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '库存',
+  `goods_typename` varchar(50) DEFAULT '' COMMENT '分类',
+  `imgs` varchar(50) DEFAULT '',
+  `onsale` tinyint(4) unsigned NOT NULL DEFAULT '0' COMMENT '是否上架',
+  `goods_details` varchar(50) DEFAULT '' COMMENT '详情',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8;
 
 
 
+
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE `orders` (
+  `order_id` int(11) NOT NULL AUTO_INCREMENT,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+ `goods_id` varchar(50) NOT NULL DEFAULT '',
+ `goods_name` varchar(50) NOT NULL DEFAULT 'noname',
+  `goods_price` float(10,2) NOT NULL DEFAULT '0.00',
+  `purchase_quantity` float(10,0) NOT NULL DEFAULT '0',	
+  `member_id` varchar(50) NOT NULL DEFAULT '',
+  `members_addr` varchar(50) NOT NULL DEFAULT '',
+  `state` tinyint(8) NOT NULL DEFAULT '0' COMMENT '订单状态',	
+  `state_name` varchar(50) NOT NULL DEFAULT '',	
+  PRIMARY KEY (`orderId`),
+  UNIQUE KEY `orderId` (`orderId`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8;
 
  
 

@@ -1,69 +1,87 @@
 <template>
     <el-form ref="form" :model="form" label-width="80px" class="form-contain">
+    <el-table
+            v-loading='load'
+            ref="multipleTable"
+            @selection-change="handleSelectionChange"
+            :data="tableData"
+            border
+            tooltip-effect="dark"
+            style="width: 100%">
+            <el-table-column
+                type="selection">
+            </el-table-column>
 
-        <el-form-item label="商品名称">
-            <el-input v-model="form.goods_name"></el-input>
-        </el-form-item>
+            <el-table-column
+                prop="order_id"
+                label="订单号">
+            </el-table-column>
 
-        <el-form-item label="商品价格">
-            <el-input placeholder="请输入内容" v-model="form.goods_price" type='number'>
-                <template slot="append">元</template>
-</el-input>
-</el-form-item>
-
-
-<el-form-item label="商品库存">
-	<el-input-number v-model="form.inventory" :min="0"></el-input-number>
-</el-form-item>
-
-  <el-form-item label="商品类型">	  
-	 <el-select v-model="form.goods_typename"     placeholder="请选择商品类型">
-    <el-option
-      v-for="item in goodsTpyeList"
-      :key="item.goods_typename"
-      :label="item.goods_typename"
-      :value="item.goods_typename">
-    </el-option>
-  </el-select>    
-  </el-form-item>
-	  
-
-
-
-
-
-
-
-<el-form-item label="商品状态">
-	<el-radio-group v-model="form.onsale">
-		<el-radio :label="0">下架</el-radio>
-		<el-radio :label="1">上架</el-radio>
-
-	</el-radio-group>
-</el-form-item>
+			
+				  <el-table-column
+                prop="member_name"
+                label="用户名称">
+            </el-table-column>
+			
+			
+			 <el-table-column
+                prop="members_addr"
+                label="收货地址">
+            </el-table-column>
+			
+				
+			 <el-table-column
+                prop="goods_name"
+                label="产品名称">
+            </el-table-column>
+			
+				
+		   <el-table-column
+                label="产品价格">
+                <template scope="scope">
+                    {{ scope.row.goods_price }}元
+                </template>
+</el-table-column>
 
 
-<el-form-item label="商品详情">
-	<el-input type="textarea" :rows="3" placeholder="请输入内容" v-model="form.goods_details">
-	</el-input>
-
-</el-form-item>
+<el-table-column prop="purchase_quantity" label="购买数量">
+</el-table-column>
 
 
 
-<el-form-item label="上传图片">
-<el-upload
-  action="https://jsonplaceholder.typicode.com/posts/"
-  list-type="picture-card"
-  :on-preview="handlePictureCardPreview"
-  :on-remove="handleRemove">
-  <i class="el-icon-plus"></i>
-</el-upload>
-<el-dialog v-model="dialogVisible" size="tiny">
-  <img width="100%" :src="dialogImageUrl" alt="">
-</el-dialog>
+<el-table-column prop="state_name" label="订单状态">
+</el-table-column>
 
-</el-form-item>
+
+
+
+
+<el-table-column width="160" label="添加日期">
+	<template scope="scope">
+                    <el-icon name="time"></el-icon>
+                    <span style="margin-left: 10px">{{ scope.row.create_time }}</span>
+                </template>
+</el-table-column>
+
+
+
+
+<el-table-column label="操作" width="300">
+	<template scope="scope">
+                    <el-button
+                        size="small"
+                        @click="editGoods(scope.row)">修改订单
+                    </el-button>
+                    <el-button
+                        size="small"
+                        type="danger"
+                        @click="handleDelete(scope.row)">删除订单
+                    </el-button>
+                </template>
+</el-table-column>
+
+</el-table>
+
 
 
 <el-form-item>
@@ -76,75 +94,34 @@
 
 <script>
 	export default {
-		name: 'form',
+		    name: 'list',
 
 		data() {
 			return {
 				isNew: 1, // 是否是添加
-				form: {
-					goods_id: undefined,
-					goods_name: '',
-					goods_price: 0,
-					onsale: '',
-					inventory: 0,
-					imgs: '',
-					goods_type: '',
-					goods_typename:'',
+				tableData: [],
+				multipleSelection: [],
+				load: false, // loading
 
-				},
-                 goodsTpyeList:"",
-				 dialogImageUrl: '',
-				dialogVisible: false
 			}
 		},
-		
-		
-		
+
+
+
 		methods: {
-			onSubmit() {
-				if (!this.form.goods_name) {
-					this.$message.warning('请填写完整信息');
-					return;
-				}
 
-				this.func.ajaxPost(this.api.goodsAdd, this.form, res => {
-					if (res.data.code === 200) {
-						this.$message.success('操作成功');
-						this.$router.push('/admin/goods-list');
-					}
-				});
-			},
 
-			
-			goodsType(){
-				
-				this.func.ajaxPost(this.api.goodsType, this.form, res => {
-					if (res.data.code === 200) {
-						this.goodsTpyeList =res.data.resultList;
-						console.log(res.data.resultList);
-					
-					}
-				});
-				
-			},
-			
-			
-			
+
 			onCancel() {
-				this.$router.push('/admin/goods-list');
+				this.$router.push('/admin/order-list');
 			},
 
 
 
-		handleRemove(file, fileList) {
-        console.log(file, fileList);
-      },
-      handlePictureCardPreview(file) {
-        this.dialogImageUrl = file.url;
-		 this.form.imgs = file.url;
-//       this.dialogVisible = true;
-      }
-
+		
+			handleSelectionChange(val) {
+				this.multipleSelection = val;
+			}
 
 		},
 
@@ -152,20 +129,23 @@
 
 
 		created() {
-			let goods_id = this.$route.query.goods_id;
+			let member_id = this.$route.query.member_id;
 
-			if (goods_id) {
+			if (member_id) {
 				this.isNew = 0;
 
-				this.func.ajaxPost(this.api.goodsDetail, {
-					goods_id
+				this.func.ajaxPost(this.api.orderDetail, {
+					member_id
 				}, res => {
-					this.form = res.data.resultList;
-					this.form.goods_id = res.data.resultList.goods_id;
+
+					this.tableData = res.data.resultList;
+					this.load = false;
+
+
 				});
 			}
-			
-			this.goodsType();
+
+
 		},
 
 	}

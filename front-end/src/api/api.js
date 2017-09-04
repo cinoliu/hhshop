@@ -43,4 +43,22 @@ module.exports = {
     goodsAdd: baseUrl + '/goods/add',
     goodsDeleteMulti: baseUrl + '/goods/delete-multi',
     goodsUploadImg: baseUrl + '/goods/upload-img',
+	
+	
+	
+	
+	
+		
+	 // order
+    orderList: baseUrl + '/order/list',	
+    orderDetail: baseUrl + '/order/detail',
+    orderDelete: baseUrl + '/order/delete',
+    orderAdd: baseUrl + '/order/add',
+
+  
+	
+	
+	
+	
+	
 };

@@ -42,4 +42,26 @@ module.exports = {
     goodsAdd: path + '/goods/add',
     goodsDeleteMulti: path + '/goods/delete-multi',
     goodsUploadImg: path + '/goods/upload-img',
+	
+	
+	
+	
+		
+	 // order
+   	orderList: path + '/order/list',
+	orderType:path + '/order/fetchType',	
+    orderDetail: path + '/order/detail',
+    orderDelete: path + '/order/delete',
+    orderAdd: path + '/order/add',
+    orderDeleteMulti: path + '/order/delete-multi',
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 };
