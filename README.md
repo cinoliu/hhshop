@@ -2,8 +2,9 @@
 - 用到的技术栈
 - 数据库：mysql + NavicatPremium
 - 后端：node + express + mysqljs(node数据库模块)
-- 前端: vue(mvvm框架) + elment-ui(快速搭建前端页面) + axios(ajax) + webpack(构建工具)
-- [微信小程序](https://github.com/cinoliu/LFT-) ： 目前开发此管理系统主要是为了之前的微信小程序提供接口
+- 前端[front-end]: vue(mvvm框架) + elment-ui(快速搭建前端页面) + axios(ajax) + webpack(构建工具)
+- 前端[front-end(iview2)] :vue2(mvvm框架)  + iview2(快速搭建前端页面) + axios(ajax) + webpack2(构建工具) +echarts(数据可视化图表库)
+- [微信小程序] ： 目前开发此管理系统主要是为了之前的微信小程序提供接口（目前不开放）
 
 ## 前言 ##
 后端负责提供接口，操作数据库提供前端所需的数据和状态。
@@ -18,7 +19,20 @@
 - [x] 会员管理
 - [x] 商品管理
 - [x] 订单管理
-- [x] 跨域( 弃用axios跨域 改用node.js跨域) 
+- [x] 跨域
+
+
+
+
+## front-end(iview2)截图 
+  登录界面</br>
+![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/front-end(iview2)/Screenshot/login.jpg) 
+  商品报表</br>
+![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/front-end(iview2)/Screenshot/goods.jpg)   
+ 订单报表
+![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/front-end(iview2)/Screenshot/oder.jpg) 
+ 用户权限管理
+![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/front-end(iview2)/Screenshot/user.jpg)   
 
 
 
