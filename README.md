@@ -41,7 +41,6 @@ APP  （功能同小程序版本）
 ## small-program 截图 
 
 ![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/small-program/Screenshot/1.jpg) 
-
 ![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/small-program/Screenshot/2.jpg) 
 ![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/small-program/Screenshot/3.jpg) 
 
