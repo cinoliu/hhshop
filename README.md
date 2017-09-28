@@ -4,8 +4,8 @@
 - 后端：node + express + mysqljs(node数据库模块)
 - 前端: [ front-end ]: vue+ elment-ui + axios + webpack
 - 前端: [ front-end(iview2) ] :vue2  + iview2 + axio + webpack2 +echarts
-- 小程序 [ small-program ] ： 微信小程序api + ES6-Promise（目前不开放）
-- App(跨平台)  [ webapp ] ：vue-router+ vue-resource + webpack + es6-babel +HBuild基座 （目前不开放）
+- 小程序 [ small-program ] ： 微信小程序api + ES6-Promise（目前不开源）
+- App(跨平台)  [ webapp ] ：vue-router+ vue-resource + webpack + es6-babel +HBuild基座 （目前不开源）
 
 ## 前言 ##
 后端负责提供接口，操作数据库提供前端所需的数据和状态。
@@ -38,11 +38,9 @@ APP  （功能同小程序版本）
 ![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/front-end(iview2)/Screenshot/user.jpg)   
 
 
-## small-program 截图 
+## 小程序 截图 
 
 ![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/small-program/Screenshot/1.jpg) 
-![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/small-program/Screenshot/2.jpg) 
-![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/small-program/Screenshot/3.jpg) 
 
 
 
