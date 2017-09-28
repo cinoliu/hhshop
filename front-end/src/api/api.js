@@ -23,7 +23,6 @@ module.exports = {
     memberAdd: baseUrl + '/member/add',
     memberDeleteMulti: baseUrl + '/member/delete-multi',
     memberChangeRole: baseUrl + '/member/change-role',
-
 	
 	
 	// goodstype
@@ -32,7 +31,6 @@ module.exports = {
     goodstypeDelete: baseUrl + '/goodstype/delete',
     goodstypeAdd: baseUrl + '/goodstype/add',
    
-	
 
 	
 	 // goods
@@ -43,9 +41,6 @@ module.exports = {
     goodsAdd: baseUrl + '/goods/add',
     goodsDeleteMulti: baseUrl + '/goods/delete-multi',
     goodsUploadImg: baseUrl + '/goods/upload-img',
-	
-	
-	
 	
 	
 		

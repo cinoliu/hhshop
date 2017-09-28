@@ -105,10 +105,6 @@ module.exports = {
 		let member_address3 = req.body.member_address3;
 		let sql, arr;
 
-
-
-
-
 			if (member_id) {
 				// 更新
 			

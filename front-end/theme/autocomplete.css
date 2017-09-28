@@ -111,7 +111,7 @@
 }
 .el-input.is-active .el-input__inner{
     outline: none;
-    border-color: #20a0ff;
+    border-color: #c6914f;
 }
 .el-input__inner{
     -webkit-appearance: none;

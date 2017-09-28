@@ -1,8 +1,6 @@
 <template>
-    <div class="admin-list">
-		
-		
-		<div style="margin-bottom:30px">	
+    <div class="admin-list">		
+<div style="margin-bottom:30px">	
 	<el-breadcrumb separator="/">
   <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
   <el-breadcrumb-item>商品管理</el-breadcrumb-item>
@@ -52,34 +50,28 @@
                 <template scope="scope">
                     {{ scope.row.goods_price }}元
                 </template>
-            </el-table-column>
-			
-			  <el-table-column
-                prop="goods_typename"
-                label="商品类型">
-            </el-table-column>
-			
-			  <el-table-column
-                prop="goods_details"
-                label="商品详情">
-            </el-table-column>
-		
-			
-			
-            <el-table-column
-                width="160"
-                label="添加日期">
-                <template scope="scope">
+</el-table-column>
+
+<el-table-column prop="goods_typename" label="商品类型">
+</el-table-column>
+
+<el-table-column prop="goods_details" label="商品详情">
+</el-table-column>
+
+
+
+<el-table-column width="160" label="添加日期">
+	<template scope="scope">
                     <el-icon name="time"></el-icon>
                     <span style="margin-left: 10px">{{ scope.row.create_time }}</span>
                 </template>
-            </el-table-column>
-
-         
+</el-table-column>
 
 
-            <el-table-column label="操作" width="300">
-                <template scope="scope">
+
+
+<el-table-column label="操作" width="300">
+	<template scope="scope">
                     <el-button
                         size="small"
                         @click="editGoods(scope.row)">修改商品
@@ -90,55 +82,54 @@
                         @click="handleDelete(scope.row)">删除商品
                     </el-button>
                 </template>
-            </el-table-column>
+</el-table-column>
 
-        </el-table>
-    
+</el-table>
+
 <div class="pagination">
-	
+
 	<el-pagination @current-change="handleCurrentChange" layout="prev, pager, next" :total="500">
 	</el-pagination>
 </div>
 
-    </div>
+</div>
 </template>
 
 <script>
-
-    export default {
-        name: 'list',
-        data() {
-            return {
-               tableData: [],
+	export default {
+		name: 'list',
+		data() {
+			return {
+				tableData: [],
 				cur_page: 1,
 				goods_name: '',
-			
-                multipleSelection: [],
 
-                load: false, // loading
-            }
-        },
+				multipleSelection: [],
 
-        methods: {
-          
+				load: false, // loading
+			}
+		},
+
+		methods: {
+
 			fetchList() {
-		
-			 this.load = true;
-				var reqParams ={
-					goods_name:this.goods_name,
-					cur_page :this.cur_page,
-				
+
+				this.load = true;
+				var reqParams = {
+					goods_name: this.goods_name,
+					cur_page: this.cur_page,
+
 				};
-		
-            this.func.ajaxPost(this.api.goodsList,reqParams,res => {
-                this.tableData = res.data.resultList;
-                this.load = false;
-            });
-				
-		
+
+				this.func.ajaxPost(this.api.goodsList, reqParams, res => {
+					this.tableData = res.data.resultList;
+					this.load = false;
+				});
+
+
 			},
-			
-		//分页
+
+			//分页
 			handleCurrentChange(val) {
 				this.cur_page = val;
 				this.fetchList();
@@ -146,38 +137,46 @@
 
 			//搜索
 			search() {
-			
+
 				this.fetchList();
 			},
-  // 删除
-            handleDelete(row) {
-                this.func.ajaxPost(this.api.goodsDelete, {goods_id: row.goods_id}, res => {
-                    if (res.data.code === 200) {
-                        let index = this.tableData.indexOf(row);
-                        this.tableData.splice(index, 1);
-                        this.$message.success('删除成功');
-                    }
-                });
-            },
+			// 删除
+			handleDelete(row) {
+				this.func.ajaxPost(this.api.goodsDelete, {
+					goods_id: row.goods_id
+				}, res => {
+					if (res.data.code === 200) {
+						let index = this.tableData.indexOf(row);
+						this.tableData.splice(index, 1);
+						this.$message.success('删除成功');
+					}
+				});
+			},
 
 
-            // 修改
-            editGoods (row) {
-                this.$router.push({path: '/admin/goods-form', query: {goods_id: row.goods_id}});
-            },
+			// 修改
+			editGoods(row) {
+				this.$router.push({
+					path: '/admin/goods-form',
+					query: {
+						goods_id: row.goods_id
+					}
+				});
+			},
 
 
-            handleSelectionChange(val) {
-                this.multipleSelection = val;
-            }
-        },
+			handleSelectionChange(val) {
+				this.multipleSelection = val;
+			}
+		},
 
-		
+
 		created() {
 			this.fetchList();
 		},
-     
 
 
-    }
+
+	}
+
 </script>
