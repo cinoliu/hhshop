@@ -2,14 +2,17 @@
 - 用到的技术栈
 - 数据库：mysql + NavicatPremium
 - 后端：node + express + mysqljs(node数据库模块)
-- 前端[front-end]: vue(mvvm框架) + elment-ui(快速搭建前端页面) + axios(ajax) + webpack(构建工具)
-- 前端[front-end(iview2)] :vue2(mvvm框架)  + iview2(快速搭建前端页面) + axios(ajax) + webpack2(构建工具) +echarts(数据可视化图表库)
-- [微信小程序] ： 目前开发此管理系统主要是为了之前的微信小程序提供接口（目前不开放）
+- 前端: [ front-end ]: vue+ elment-ui + axios + webpack
+- 前端: [ front-end(iview2) ] :vue2  + iview2 + axio + webpack2 +echarts
+- 小程序 [ small-program ] ： 微信小程序api + ES6-Promise（目前不开放）
+- App(跨平台)  [ webapp ] ：vue-router+ vue-resource + webpack + es6-babel +HBuild基座 （目前不开放）
 
 ## 前言 ##
 后端负责提供接口，操作数据库提供前端所需的数据和状态。
-前端负责调用接口，将数据展示给用户，并对用户的一些操作转发给后端处理。
-数据库当然是负责存储数据啦，关于数据库，网上很多教程都是使用mongodb，通过mongoose操作mongdb的确比mysql便捷很多，不过实际工作中还是使用mysql的多，技术还是得回归实际应用才能体现出价值。
+前端负责调用接口，将商品库存 用户订单 报表 展示给系统管理人员，并对商品的录入 用户购买行为进行分析  用户的订单进行处理。
+小程序 负责C端的产品分类，产品展示，用户下单，实时客服， 购物车 订单详情 以及用户购买行为记录
+APP  （功能同小程序版本）
+数据库 负责存储数据啦，关于数据库，网上很多教程都是使用mongodb，通过mongoose操作mongdb的确比mysql便捷很多，不过实际工作中还是使用mysql的多，技术还是得回归实际应用才能体现出价值。
 
 
 ## 功能 ##
@@ -33,6 +36,16 @@
 ![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/front-end(iview2)/Screenshot/oder.jpg) 
  用户权限管理
 ![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/front-end(iview2)/Screenshot/user.jpg)   
+
+
+## small-program 截图 
+
+![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/front-end(iview2)/small-program/1.jpg) 
+
+![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/front-end(iview2)/small-program/2.jpg) 
+![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/front-end(iview2)/small-program/3.jpg) 
+
+
 
 
 
