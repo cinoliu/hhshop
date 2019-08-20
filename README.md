@@ -4,8 +4,8 @@
 - 数据库：mysql + NavicatPremium
 - 后端：node + express + mysqljs(node 数据库模块)
 
-- 前端: [ front-end(iview2) ] :vue2 + iview2 + axio + webpack2 +echarts
-- 小程序 [ small-program ] ： 微信小程序 api + ES6-Promise
+- 前端: [ hhshop-mgr ] :vue2 + iview2 + axio + webpack2 +echarts
+- 小程序 [ hhshop-mini ] ： 微信小程序 api + ES6-Promise
 - App(跨平台) [ webapp ] ：vue-router+ vue-resource + webpack + es6-babel +HBuild 基座
 
 ## 前言
@@ -41,7 +41,7 @@
 
 * [x] ### 店铺管理
 
-      -关键字设置
+        -关键字设置
         -首页轮播
         -专题管理
         -运费模版
@@ -73,17 +73,19 @@
         -新手指南
         -售后指南
 
-## front-end(iview2)截图  
+## hhshop-mini 小程序截图  
 
-登录界面</br>
-![](<https://raw.githubusercontent.com/cinoliu/node-admin-/master/front-end(iview2)/Screenshot/login.jpg>)
-  商品报表</br>
-![](<https://raw.githubusercontent.com/cinoliu/node-admin-/master/front-end(iview2)/Screenshot/goods.jpg>)  
- 订单报表
-![](<https://raw.githubusercontent.com/cinoliu/node-admin-/master/front-end(iview2)/Screenshot/oder.jpg>)
-用户权限管理
-![](<https://raw.githubusercontent.com/cinoliu/node-admin-/master/front-end(iview2)/Screenshot/user.jpg>)
+## hhshop-mgr 截图  
 
-## 小程序 截图  
-
-![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/small-program/Screenshot/1.jpg)
+![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mgr/1.png)
+![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mgr/2.png)
+![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mgr/3.png)
+![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mgr/4.png)
+![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mgr/5.png)
+![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mgr/6.png)
+![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mgr/7.png)
+![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mgr/8.png)
+![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mgr/9.png)
+![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mgr/10.png)
+![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mgr/11.png)
+![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mgr/12.png)
