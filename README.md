@@ -3,8 +3,8 @@
 - [x] [管理系统](https://www.gjmss.cn/hhshop-mgr/) 
 
         -不同账户权限不一样 
-        -账户 1 admin 密码 123456 
-        -账户 2 admin1 密码 123456
+        -账户 admin 密码 123456 
+        -账户 admin1 密码 123456
 
 ## 前言
 
