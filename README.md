@@ -1,9 +1,9 @@
 ## 项目线上地址
 
-- [x] [管理系统](https://www.gjmss.cn/hhshop-mgr/) 
+- [x] [管理系统](https://www.gjmss.cn/hhshop-mgr/)
 
-        -不同账户权限不一样 
-        -账户 admin 密码 123456 
+        -不同账户权限不一样
+        -账户 admin 密码 123456
         -账户 admin1 密码 123456
 
 ## 前言
@@ -103,6 +103,10 @@
 
         -新手指南
         -售后指南
+
+## hhshop-mini 截图  
+
+![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mini/1.png)
 
 ## hhshop-mgr 截图  
 
