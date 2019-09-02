@@ -47,6 +47,10 @@
 
 - 11.权限管理：可以创建不同身份，不同管理员，同一个管理员可以拥有多重身份，权限可以控制到每一个控制器函数，例如：张三 1.可以控制他可以查看产品，但不能编辑产品； 2.可以添加产品，但不能删除产品； 3.可以查看用户但不能给用户发信息、加积分、开通分销等等； 。。。灵活应用，权限想怎么配就怎么配
 
+## hhshop-mini 截图  
+
+![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mini/1.png)
+
 ## hhshop-mgr 功能展示
 
 - [x] ### 系统管理
@@ -103,10 +107,6 @@
 
         -新手指南
         -售后指南
-
-## hhshop-mini 截图  
-
-![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mini/1.png)
 
 ## hhshop-mgr 截图  
 
