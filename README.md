@@ -8,26 +8,28 @@
 
 ## 前言
 
-- 后端负责提供接口，操作数据库提供前端所需的数据和状态。
-- 前端负责调用接口，将商品库存 用户订单 报表 展示给系统管理人员，并对商品的录入 用户购买行为进行分析 用户的订单进行处理。
-- 小程序 负责 C 端的产品分类，产品展示，用户下单，实时客服， 购物车 订单详情 以及用户购买行为记录 优惠券、积分、秒杀、拼团、砍价、分销
+- 后端[ hhshop-api ] 负责提供接口，操作数据库提供前端所需的数据和状态。
+- 管理系统[ hhshop-mgr ] 负责调用接口，将商品库存 用户订单 报表 展示给系统管理人员，并对商品的录入 用户购买行为进行分析 用户的订单进行处理。
+- 小程序[ hhshop-mini-app ] 负责 C 端的产品分类，产品展示，用户下单，实时客服， 购物车 订单详情 以及用户购买行为记录 优惠券、积分、秒杀、拼团、砍价、分销、会员等级
+- 小程序版管理系统 [ hhshop-mini-admin ]（功能同 PC 版管理系统）
 - APP （功能同小程序版本）
-- 数据库 负责存储数据啦，关于数据库，网上很多教程都是使用 mongodb，通过 mongoose 操作 mongdb 的确比 mysql 便捷很多，不过实际工作中还是使用 mysql- 的多，技术还是得回归实际应用才能体现出价值。
+- 数据库 负责存储数据啦，关于数据库，网上很多教程都是使用 mongodb，通过 mongoose 操作 mongdb 的确比 mysql 便捷很多，不过实际工作中还是使用 mysql 的多，技术还是得回归实际应用才能体现出价值。
 
 # hhshop
 
 - 用到的技术栈
 - 数据库：mysql + NavicatPremium
-- 后端：node + express + mysqljs(node 数据库模块)
-- 前端: [ hhshop-mgr ] :vue2 + iview2 + axio + webpack2 +echarts
-- 小程序 [ hhshop-mini ] ： 微信小程序 api + ES6-Promise
+- 后端[ hhshop-api ]：node + express + mysqljs(node 数据库模块)
+- 管理系统 [ hhshop-mgr ] :vue2 + iview2 + axio + webpack2 +echarts
+- 小程序 [ hhshop-mini-app ] ： 微信小程序 api + ES6-Promise
+- 小程序版管理系统 [ hhshop-mini-admin ] ： 微信小程序 api + ES6-Promise
 - App(跨平台) [ webapp ] ：vue-router+ vue-resource + webpack + es6-babel +HBuild 基座
 
 ## 功能详情
 
 - 1.商品:  能够对商品的状态分类管理 (出售中、待上架、库存中、已售馨、库存警戒、回收站)、添加产品、添加商品分类等功能
 
-- 2.会员:站内会员的管理 (发放优惠劵、发通知、发图文消息、增加余额、会员行为详情) 等功能
+- 2.会员:站内会员的管理 (会员等级、发放优惠劵、发通知、发图文消息、增加余额、会员行为详情) 等功能
 
 - 3.营销:能够管理优惠的发放和制作、用户积分的统计使用情况、秒杀产品的管理等
 
@@ -47,13 +49,17 @@
 
 - 11.权限管理：可以创建不同身份，不同管理员，同一个管理员可以拥有多重身份，权限可以控制到每一个控制器函数，例如：张三 1.可以控制他可以查看产品，但不能编辑产品； 2.可以添加产品，但不能删除产品； 3.可以查看用户但不能给用户发信息、加积分、开通分销等等； 。。。灵活应用，权限想怎么配就怎么配
 
-## hhshop-mini 截图  
+## hhshop-mini-app 截图  
 
-![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mini/1.png)
+![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mini-app/1.png)
+
+## hhshop-mini-admin 截图  
+
+![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mini-admin/1.png)
 
 ## hhshop-mgr 功能展示
 
-- [x] 系统管理
+- [x] 权限管理
 
         - 用户管理
         - 角色管理
@@ -97,13 +103,13 @@
          - 分销用户
          - 分销明细
 
-- [x]  会员管理
+- [x] 会员管理
 
         - 会员列表
         - 会员等级设置
         - 会员反馈
 
-- [x]  文章管理
+- [x] 文章管理
 
         - 新手指南
         - 售后指南
