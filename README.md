@@ -70,25 +70,25 @@
 
 ## hhshop-mini-app 截图  
 
-![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mini-app/1.png)
+![](https://raw.githubusercontent.com/cinoliu/hhshop/master/hhshop-mini-app/1.png)
 
 ## hhshop-mini-admin 截图  
 
-![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mini-admin/1.png)
+![](https://raw.githubusercontent.com/cinoliu/hhshop/master/hhshop-mini-admin/1.png)
 
 
 
 ## hhshop-mgr 截图  
 
-![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mgr/1.png)
-![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mgr/2.png)
-![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mgr/3.png)
-![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mgr/4.png)
-![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mgr/5.png)
-![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mgr/6.png)
-![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mgr/7.png)
-![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mgr/8.png)
-![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mgr/9.png)
-![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mgr/10.png)
-![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mgr/11.png)
-![](https://raw.githubusercontent.com/cinoliu/node-admin-/master/hhshop-mgr/12.png)
+![](https://raw.githubusercontent.com/cinoliu/hhshop/master/hhshop-mgr/1.png)
+![](https://raw.githubusercontent.com/cinoliu/hhshop/master/hhshop-mgr/2.png)
+![](https://raw.githubusercontent.com/cinoliu/hhshop/master/hhshop-mgr/3.png)
+![](https://raw.githubusercontent.com/cinoliu/hhshop/master/hhshop-mgr/4.png)
+![](https://raw.githubusercontent.com/cinoliu/hhshop/master/hhshop-mgr/5.png)
+![](https://raw.githubusercontent.com/cinoliu/hhshop/master/hhshop-mgr/6.png)
+![](https://raw.githubusercontent.com/cinoliu/hhshop/master/hhshop-mgr/7.png)
+![](https://raw.githubusercontent.com/cinoliu/hhshop/master/hhshop-mgr/8.png)
+![](https://raw.githubusercontent.com/cinoliu/hhshop/master/hhshop-mgr/9.png)
+![](https://raw.githubusercontent.com/cinoliu/hhshop/master/hhshop-mgr/10.png)
+![](https://raw.githubusercontent.com/cinoliu/hhshop/master/hhshop-mgr/11.png)
+![](https://raw.githubusercontent.com/cinoliu/hhshop/master/hhshop-mgr/12.png)
