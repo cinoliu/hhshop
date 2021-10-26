@@ -1,6 +1,6 @@
 ## 项目线上地址
 
-- [x] [管理系统](https://www.gjmss.cn/hhshop-mgr/)
+- [x] [管理系统](http://1.12.231.13/hhshop-mgr/index.html)
 
         -不同账户权限不一样
         -账户 admin 密码 123456
