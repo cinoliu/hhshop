@@ -1,6 +1,6 @@
 ## 项目线上地址
 
-- [x] [管理系统](http://1.12.231.13/hhshop-mgr/index.html)
+- [x] [管理系统](http://1.12.231.13/hhshop-mgr3/index.html) (已升级3.0版本)
 
         -不同账户权限不一样
         -账户 admin 密码 123456
